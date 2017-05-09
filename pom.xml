@@ -12,7 +12,7 @@
 	<groupId>com.optum.synergy</groupId>
 	<version>0.1-SNAPSHOT</version>
 
-	<name>com.optum.synergy.hen</name>
+	<name>com.optum.synergy.phs</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -292,6 +292,6 @@
 
 	</profiles>
 
-	<description>Health eNotes Automated Testing Suite</description>
+	<description>PHS Automated Testing Suite</description>
 	<artifactId>reference</artifactId>
 </project>
