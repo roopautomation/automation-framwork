@@ -11,6 +11,8 @@
 
 	<groupId>com.optum.synergy</groupId>
 	<version>0.1-SNAPSHOT</version>
+	<description>PHS Automated Testing Suite</description>
+	<artifactId>phs-testsuite</artifactId>
 
 	<name>com.optum.synergy.phs</name>
 
@@ -292,6 +294,5 @@
 
 	</profiles>
 
-	<description>PHS Automated Testing Suite</description>
-	<artifactId>reference</artifactId>
+	
 </project>
