@@ -1,0 +1,12 @@
+{
+"browser name":"FIREFOX",
+    "cloud connect":{
+    "browser version":"48",
+    "platform name":"Windows 7",
+    "test suite name":"HENtestSuite",
+        "url":"",
+        "username":"",
+        "password":"",
+        "tunnel name":""
+    }
+}

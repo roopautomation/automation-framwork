@@ -1,0 +1,12 @@
+{
+"browser name":"Firefox",
+    "cloud connect":{
+    "browser version":"",
+    "platform name":"",
+    "test suite name":"",
+        "url":"",
+        "username":"",
+        "password":"",
+        "tunnel name":""
+    }
+}

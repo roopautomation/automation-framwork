@@ -1,0 +1,31 @@
+{
+	"dev": {
+		"landingPageUrl": "C:\\Users\\hnewby\\git\\project\\healthenotes\\healthenotes\\landing.html",
+		"dashboardUrl": "C:\\Users\\hnewby\\git\\project\\healthenotes\\healthenotes\\home.html",
+		"PDBDetails": {
+			"DBConnectionString": "jdbc:mysql://server:3306/db",
+			"user": "username",
+			"password": "password"
+		},
+		"HSIDDetails": {
+			"loginUrl": "",
+			"user": "",
+			"password": ""
+		}
+	},
+	"test": {
+		"landingPageUrl": "https://www.optum.com/",
+		"dashboardUrl": "http://www.unitedhealthgroup.com/",
+		"PDBDetails": {
+			"DBConnectionString": "jdbc:mysql://host.uhc.com:3306/db",
+			"user": "username",
+			"password": "password"
+		},
+		"HSIDDetails": {
+			"loginUrl": "",
+			"user": "",
+			"password": ""
+		}
+	}
+}
+	

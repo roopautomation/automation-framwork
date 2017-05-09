@@ -1,0 +1,12 @@
+{
+"browser name":"Firefox",
+    "cloud connect":{
+    "browser version":"38",
+    "platform name":"Windows 7",
+    "test suite name":"Windows FF 38 Tests",
+        "url":"http://%s:%s@ondemand.saucelabs.com:80/wd/hub",
+        "username":"kandpald",
+        "password":"7830ed77-cb3b-4760-b046-ba09f19dbb30",
+        "tunnel name":""
+    }
+}

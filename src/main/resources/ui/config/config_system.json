@@ -1,0 +1,8 @@
+{
+"environment.type":"dev",
+"browser.type":"firefox",
+"pdb_environment":"dev",
+"pdb_username":"",
+"pdb_password":"",
+"":""
+}

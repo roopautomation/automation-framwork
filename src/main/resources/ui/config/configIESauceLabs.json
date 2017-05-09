@@ -1,0 +1,7 @@
+{
+    "browser name":"IE",
+    "cloud connect":{
+        "url":"http://%s:%s@ondemand.saucelabs.com:80/wd/hub",
+        "username":"nalin.perera%40optum.com",
+        "password":"24afcb33-dde8-461d-a05d-52bb1c7496b4"
+}
