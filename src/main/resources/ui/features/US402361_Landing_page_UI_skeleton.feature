@@ -13,7 +13,7 @@ Scenario: Landing Page UI Skeleton displays correctly
 	And user sees a video preview image in right side of video section
 	And user sees information tiles and content
 	And user sees additional registration and login section
-	And user sees footer section and that's it
+	And user sees footer section
 
 @Ignore @Regression
 Scenario: Video enables correctly on Landing page
