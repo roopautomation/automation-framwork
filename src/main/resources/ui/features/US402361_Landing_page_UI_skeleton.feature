@@ -1,4 +1,4 @@
-#Author: heather.newby@optum.com
+#Author: heather.newby@optum.com modified to test
 @Release0.0.1 @Sprint1
 Feature: US402361 Landing Page UI Skeleton
 	
@@ -13,9 +13,11 @@ Scenario: Landing Page UI Skeleton displays correctly
 	And user sees a video preview image in right side of video section
 	And user sees information tiles and content
 	And user sees additional registration and login section
-	And user sees footer section
+	And user sees footer section and that's it
 
 @Ignore @Regression
 Scenario: Video enables correctly on Landing page
 	When user clicks video preview image video activates
 	Then video activates
+	
+#Another comment	
