@@ -28,7 +28,8 @@ public class CommonStepDefinition {
 		this.helper = new CommonHelper();
 	}
 
-	public CommonHelper getCommonHelper() {
+	public CommonHelper getCommonHelper() 
+	{
 		return helper;
 	}
 
@@ -79,13 +80,5 @@ public class CommonStepDefinition {
 	 * --------------------------------------- Thens
 	 * -----------------------------------------
 	 **/	
-	@Then("^Privacy Policy page loads")
-	public void privacyPolicyPageLoads() throws Throwable {
-		privacyPage.verifyIfPageLoaded();
-	}
 	
-	@Then("^Terms of Use page loads")
-	public void termsOfUsePageLoads() throws Throwable {
-		termsPage.verifyIfPageLoaded();
-	}
 }

@@ -19,6 +19,8 @@ public class DashboardPageObject extends PageObjectBase {
 		this.helper = helper;	
 	}
 	
+	
+	
 	@FindBy(how = How.CLASS_NAME, using = "masthead-dashboard")
 	private WebElement dashboardBanner;
 	
@@ -116,7 +118,8 @@ public class DashboardPageObject extends PageObjectBase {
 
 	public static String page_url;
 	
-	public void openPage() throws FileNotFoundException, IOException, ParseException {
+	public void openPage() throws FileNotFoundException, IOException, ParseException 
+	{
 		page_url = getEnvVariable("dashboardPageUrl");
 		helper.openPage(page_url);
 	}

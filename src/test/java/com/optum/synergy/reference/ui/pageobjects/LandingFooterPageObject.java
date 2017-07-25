@@ -10,9 +10,9 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LandingPageObject extends PageObjectBase {
+public class LandingFooterPageObject extends PageObjectBase {
 
-	public LandingPageObject(CommonHelper helper) {
+	public LandingFooterPageObject(CommonHelper helper) {
 		PageFactory.initElements(driver, this);
 		helper.driver = driver;
 		this.helper = helper;		

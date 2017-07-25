@@ -1,5 +1,9 @@
 package com.optum.synergy.reference.ui.pageobjects;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -48,6 +52,47 @@ public class CommonHelper extends PageObjectBase  {
     }
 
     
+    
+    
+    public static boolean verifyLinkActive(String linkUrl)
+	{
+    	boolean status=false;
+        try 
+        {
+           URL url = new URL(linkUrl);
+           
+           HttpURLConnection httpURLConnect=(HttpURLConnection)url.openConnection();
+           
+           httpURLConnect.setConnectTimeout(3000);
+           
+           httpURLConnect.connect();
+           
+           System.out.println("Link status code is "+httpURLConnect.getResponseCode());
+           if(httpURLConnect.getResponseCode()==200 || httpURLConnect.getResponseCode()==301)
+           {
+        	   
+               System.out.println(linkUrl+" - "+httpURLConnect.getResponseMessage());
+               status=true;
+               
+            }
+          if(httpURLConnect.getResponseCode()==HttpURLConnection.HTTP_NOT_FOUND)  
+           {
+               System.out.println(linkUrl+" - "+httpURLConnect.getResponseMessage() + " - "+ HttpURLConnection.HTTP_NOT_FOUND);
+               
+            }
+        } catch (Exception e) {
+           
+        }
+        
+        return status;
+    } 
+    
+    
+    public String getkLinkHRef(String linkName) {
+		return mediumWait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(linkName))).getAttribute("href");
+	}
+    
+    
 	public void clickLink(String linkName) {
 		mediumWait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(linkName))).click();
 	}
@@ -60,9 +105,31 @@ public class CommonHelper extends PageObjectBase  {
 		mediumWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(cssIdentifier)));
 	}
 	
-	public void openPage(String pageUrl) {
+	public void getXpathelement(WebElement ele) {
+		mediumWait.until(ExpectedConditions.visibilityOf(ele));
+	}
+	
+	public void openPage(String pageUrl) 
+	{
 
 		driver.get(pageUrl);
+		
+		Assert.assertTrue(driver.getTitle().equals("PHS"));
+		
+		System.out.println("======Page Loaded and Tite verified=======");
+		
+
+	}
+	
+	public void openPage(String pageUrl,String title) 
+	{
+
+		driver.get(pageUrl);
+		
+		Assert.assertTrue(driver.getTitle().equals(title));
+		
+		System.out.println("======Page Loaded and Tite verified=======");
+		
 
 	}
     

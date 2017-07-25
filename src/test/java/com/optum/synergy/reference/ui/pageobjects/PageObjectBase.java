@@ -60,12 +60,13 @@ public String uuid="";
 				longWait = new WebDriverWait(driver, 60);
 				//System.out.println(getSystemVariable("environment.type"));
 				//Following method will delete all the screenshots in taget folder
-				File index = new File("target\\screenshots");
+			/*	File index = new File("target\\screenshots");
 				String[]entries = index.list();
 				for(String s: entries){
 				    File currentFile = new File(index.getPath(),s);
 				    currentFile.delete();
 				}
+				*/
 				
 			}
 			 
@@ -96,6 +97,8 @@ e.printStackTrace();
 
 	}
 
+	
+	// this method will read value from config file and will return value 
 	public static String getSystemVariable(String variableName) throws IOException
 	{
 		FileInputStream fileInputStream = null;

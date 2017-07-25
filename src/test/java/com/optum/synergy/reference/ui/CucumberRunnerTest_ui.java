@@ -10,14 +10,15 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-	    plugin = { "pretty", "html:target/test-report" }, 
+	    plugin = { "pretty", "html:target/test-report",}, 
 		features = { "src/main/resources/ui/features" },
 		tags = { "@TryIt" },
 		snippets = SnippetType.CAMELCASE
 )
 public class CucumberRunnerTest_ui {
     @AfterClass
-    public static void tearDown(){
+    public static void tearDown()
+    {
 
     }
 }
