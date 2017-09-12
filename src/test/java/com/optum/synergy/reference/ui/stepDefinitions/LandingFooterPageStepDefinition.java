@@ -94,7 +94,7 @@ public class LandingFooterPageStepDefinition {
 	@When("^User clicks English Language Assistance link$")
 	public void user_clicks_English_Language_Assistance_link() throws Throwable {
 
-		String url = helper.getkLinkHRef("Language Assistance/Non-Discrimination notice");
+		String url = helper.getkLinkHRef("Language Assistance/Non-Discrimination Notice");
 
 		System.out.println("==== URL Which link Language Assistance/Non-Discrimination notice - English=======" + url);
 

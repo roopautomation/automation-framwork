@@ -1,0 +1,5 @@
+<!-- logger configuration to turn off DEBUG console messages from apache httpclient package -->
+<configuration>
+    <logger name="org.apache" level="WARN" />
+    <logger name="httpclient" level="WARN" /> 
+</configuration>

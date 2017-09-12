@@ -2,11 +2,16 @@ package com.optum.synergy.reference.ui.pageobjects;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -114,7 +119,7 @@ public class CommonHelper extends PageObjectBase  {
 
 		driver.get(pageUrl);
 		
-		Assert.assertTrue(driver.getTitle().equals("PHS"));
+		Assert.assertTrue(driver.getTitle().equals("Health Support"));
 		
 		System.out.println("======Page Loaded and Tite verified=======");
 		
@@ -132,6 +137,59 @@ public class CommonHelper extends PageObjectBase  {
 		
 
 	}
+	public void varifyPageTitle(String title){
+		
+		Assert.assertTrue("Title not verified as expected ",driver.getTitle().equals(title));
+		
+	}
+	public void newTabOpenAndTitleVerify(String title){
+		List<String> browserTabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(browserTabs .get(1));
+		
+		try 
+		{
+			new WebDriverWait(driver, 20).until(ExpectedConditions.titleContains(title));
+			Assert.assertTrue(true);
+			System.out.println("Page loaded Successfully");
+			//log.info("Login Successfully");
+		} catch (Error e) 
+		
+		{
+			System.out.println("======Page not Poaded===");
+		}
+		//driver.close();
+		//driver.switchTo().window(browserTabs.get(0));
+	}
+	public ExpectedCondition<Boolean> numberOfWindowsToBe(final int numberOfWindows) {
+	    return new ExpectedCondition<Boolean>() {
+	      @Override
+	      public Boolean apply(WebDriver driver) {
+	                driver.getWindowHandles();
+	        return driver.getWindowHandles().size() == numberOfWindows;
+	      }
+	    };
+	}
+	
+	 public void checkAndPrintScrollStatus(){
+		  JavascriptExecutor javascript = (JavascriptExecutor) driver;
+		  //Check If horizontal scroll Is present or not.
+		  Boolean b1 = (Boolean) javascript.executeScript("return document.documentElement.scrollWidth>document.documentElement.clientWidth;");
+		  //Check If vertical scroll Is present or not.
+		  Boolean b2 = (Boolean) javascript.executeScript("return document.documentElement.scrollHeight>document.documentElement.clientHeight;");
+		  if (b1 == true && b2 == true) {
+		   System.out.println("Horizontal and vertical Scrollbar is present on page.");
+		  } else if (b1 == false && b2 == true) {
+		   System.out.println("Horizontal Scrollbar not present on page.");
+		   System.out.println("Vertical Scrollbar is present on page.");
+		  }else if (b1 == true && b2 == false) {
+		   System.out.println("Horizontal Scrollbar Is present on page.");
+		   System.out.println("Vertical Scrollbar not present on page.");
+		  }else if (b1 == false && b2 == false) {
+		   System.out.println("Horizontal and Vertical Scrollbar not present on page.");   
+		  }
+		  System.out.println("<----------x--------x--------->");
+		 } 
+		
     
 	public void refreshPage()
 	{

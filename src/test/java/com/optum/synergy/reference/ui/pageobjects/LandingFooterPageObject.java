@@ -3,6 +3,8 @@ package com.optum.synergy.reference.ui.pageobjects;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -105,6 +107,9 @@ public class LandingFooterPageObject extends PageObjectBase {
 	/* Footer */
 	@FindBy(tagName = "footer")
 	private WebElement footer;
+	
+	@FindBy(how = How.CSS, using = "#footer-arrow")
+	private WebElement backTopBtn;
 
 	@FindBy(how = How.CSS, using = "footer.footer--global ul.footer-ul")
 	private WebElement footerHEN;
@@ -115,6 +120,23 @@ public class LandingFooterPageObject extends PageObjectBase {
 		page_url = getEnvVariable("landingPageUrl");
 		helper.openPage(page_url);
 	}
+	public void scroolToFooterSection(){
+		((JavascriptExecutor) driver).executeScript(
+	            "arguments[0].scrollIntoView();", backTopBtn);
+	}
+	
+	public void tabOnBackToTopButton(){
+		
+				backTopBtn.sendKeys(Keys.TAB);
+	}
+	public void pressEnterKey(){
+		backTopBtn.sendKeys(Keys.ENTER);
+	}
+	
+	public void clickOnTopButton(){
+		backTopBtn.click();
+	}
+
 
 	public boolean verifyIfPageLoaded()
 	{

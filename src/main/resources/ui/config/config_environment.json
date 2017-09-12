@@ -1,6 +1,6 @@
 {
 	"dev": {
-		"landingPageUrl": "http://publish-wcptst1-aem2.ose-ctc-core.optum.com/content/phs/phs.html",
+		"landingPageUrl": "https://test-populationhealth.optum.com/content/phs/en/phs.html",
 		"dashboardUrl": "C:\\Users\\hnewby\\git\\project\\healthenotes\\healthenotes\\home.html",
 		"PDBDetails": {
 			"DBConnectionString": "jdbc:mysql://server:3306/db",

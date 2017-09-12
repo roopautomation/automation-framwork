@@ -52,6 +52,7 @@ public String uuid="";
 			if (driver == null) {
 				/*driver = createLocalDriver();
 				driver.manage().window().maximize();*/
+				System .setProperty("webdriver.gecko.driver", "./GeckoDriver/0.17.0/geckodriver.exe");
 				driver =WebController.createAndGetDeviceDriver(CONFIG_FILE_RELATIVE_PATH);
 				WebController.maximizeWindow();
 				//driver.manage().deleteAllCookies();
