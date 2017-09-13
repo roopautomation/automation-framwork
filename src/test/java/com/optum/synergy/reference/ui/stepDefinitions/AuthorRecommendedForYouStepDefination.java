@@ -105,8 +105,7 @@ public class AuthorRecommendedForYouStepDefination {
 
 	@Then("^Contact info section displayed$")
 	public void contact_info_section_displayed(String arg1) throws Throwable {
-		recomendForyou.emailDisplayed();
-		recomendForyou.PhoneDisplayed();
+		Assert.assertTrue("Contact Info Page not displayed ",recomendForyou.contactInfoSectionDisplayed());
 	}
 	@Given("^User is on Contact info section$")
 	public void user_is_on_Contact_info_section() throws Throwable {
@@ -116,7 +115,8 @@ public class AuthorRecommendedForYouStepDefination {
 	@Given("^User Email and phone Display$")
 	public void user_Email_and_phone_Display() throws Throwable {
 		recomendForyou.emailDisplayed();
-		recomendForyou.PhoneDisplayed();
+		recomendForyou.PhoneDisplayed(); 
+		
 	}
 	@When("^User click on Edit button$")
 	public void user_click_on_Edit_button() throws Throwable {
@@ -125,7 +125,8 @@ public class AuthorRecommendedForYouStepDefination {
 
 	@Then("^Phone field and dropdown field displayed$")
 	public void phone_field_and_dropdown_field_displayed() throws Throwable {
-	    
+		Assert.assertTrue("Phone Field not displayed ",recomendForyou.phoneFieldDisplayed());
+		Assert.assertTrue("Phone type Dropdown not displayed ",recomendForyou.phoneTypeDropdownFieldDisplayed());
 	}
 
 	@Then("^default phone type displayed$")
