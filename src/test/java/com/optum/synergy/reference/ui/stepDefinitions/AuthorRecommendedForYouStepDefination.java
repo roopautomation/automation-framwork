@@ -9,7 +9,7 @@ import com.optum.synergy.reference.ui.pageobjects.LandingFooterPageObject;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
+import static org.hamcrest.CoreMatchers.*;
 public class AuthorRecommendedForYouStepDefination {
 	
 	CommonHelper helper = new CommonHelper();
@@ -131,7 +131,8 @@ public class AuthorRecommendedForYouStepDefination {
 
 	@Then("^default phone type displayed$")
 	public void default_phone_type_displayed() throws Throwable {
-	    
+	Assert.	assertEquals(recomendForyou.defaultSelectedOptionInPhoneDD(),anyOf(is("Home"),is("Cell"),is("Work"),is("TTY"))); 
+	
 	}
 
 	@When("^User edit Phone and phone type from dropdown$")
@@ -141,17 +142,17 @@ public class AuthorRecommendedForYouStepDefination {
 
 	@When("^User click on Next button$")
 	public void user_click_on_Next_button() throws Throwable {
-	    
+		recomendForyou.clickOnContactInfoNextBtn();
 	}
 
 	@Then("^Question section tab display$")
 	public void question_section_tab_display() throws Throwable {
-	   
+		recomendForyou.questionSectionDisplayed();
 	}
 
 	@Then("^Tracker status updated$")
 	public void tracker_status_updated(String arg1) throws Throwable {
-	    
+		recomendForyou.thirdTrackerCircalComplete();
 	}
 
 	

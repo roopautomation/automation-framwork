@@ -92,8 +92,8 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.ID, using = "btn-section-3")
 	private WebElement nextBtnCotactPage;
 	
-	@FindBy(how = How.XPATH, using = "")
-	private WebElement qustionPageHeader;
+	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-4']/preceding::textarea/parent::div")
+	private WebElement qustionSection;
 	
 	@FindBy(how = How.ID, using = "")
 	private WebElement emailErrorMsg;
@@ -169,7 +169,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     public void afternoonTimeCheckboxIsNotChecked(){
     	afternoonTimeCheckBox.isSelected();
     }
-    public String preSelectedOptionInPhoneDD(){
+    public String defaultSelectedOptionInPhoneDD(){
     	String selectedOption = new Select(phonTypeDD).getFirstSelectedOption().getText();
     	return selectedOption;
     }
@@ -195,10 +195,6 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	List<WebElement> noOfCircle= trackerBar.findElements(By.xpath(".//li[contains(@class,'complete')]"));
 		Assert.assertEquals(3,noOfCircle.size());
 	}
-    
-    public void questionPageDisplayed(){
-    	qustionPageHeader.isDisplayed();
-	}
 			
     public void emailErrorMsgDisplayed(){
     	emailErrorMsg.isSelected();
@@ -210,9 +206,18 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     public void clickOnEditLink(){
     	editBtn.click();
     }
-	
-
-
+	public boolean phoneFieldDisplayed(){
+		return phoneField.isDisplayed();
+	}
+	public boolean phoneTypeDropdownFieldDisplayed(){
+		return phonTypeDD.isDisplayed();
+	}
+	public void clickOnContactInfoNextBtn(){
+		nextBtnCotactPage.click();
+	}
+public void questionSectionDisplayed(){
+	qustionSection.isDisplayed();
+}
 	
 	
 }
