@@ -2,13 +2,14 @@
 Feature: Author Recommended for You page
 
   Scenario: Landing Page Functionality Testing
-    Given User is on PHS page.
+    #Given User is on PHS page.
     #When User login with his credentials of HSID
-    Then Authenticated landing page displayed
+    Given User is on recommended page
+    Then Recommended for you page title verified
     And Tabs like Header,ProgramName, UserName, Tracker CTC and Request call button display
     When User click on Request call button
     Then Preferred Time section displayed
-    And First circle of tracker is checked
+    And First circle of tracker is completed
 
   Scenario: Preferred Time section Functionality Testing
     Given User is on Preferred time page
@@ -22,7 +23,7 @@ Feature: Author Recommended for You page
     Then The Tracker updates to show progression
     And Contact info section displayed
 
-  Scenario: Contact Info Section Functionality Testing with valid data
+  Scenario: Contact info section functionality testing
     Given User is on Contact info section
     And Landing page tab Header,ProgramName, UserName, Tracker display
     And User Email and phone Display
@@ -33,38 +34,39 @@ Feature: Author Recommended for You page
     And User click on Next button
     Then Question section tab display
     And Tracker status updated
-
-  Scenario: Question Section Functionality Testing with valid data
-    Given user is on Question page
-    And Landing page tab Header,ProgramName, UserName, Tracker display
-    And SectionHeader and Description field displayed
-    When User enter text in all text fields and click on Finish button
-    Then Confirmation page display
-
-  Scenario: Testing without entering optional data
-    Given User is on PHS page.
-    #When User login with his credentials of HSID
-    Then Authenticated landing page displayed
-    And Tabs like Header,ProgramName, UserName, Tracker CTC and Request call button display
-    When User click on Request call button
-    Then Preferred Time section displayed
-    When User click CTA button
-    Then The Tracker updates to show progression
-    And Contact info section displayed
-    And User click on Next button
-    Then Question section tab display
-    When User click on Finish button
-    Then Confirmation page display
-
-  Scenario: Testing with invalid data
-    Given User is on PHS page.
-    #When User login with his credentials of HSID
-    Then Authenticated landing page displayed
-    And Tabs like Header,ProgramName, UserName, Tracker CTC and Request call button display
-    When User click on Request call button
-    Then Preferred Time section displayed
-    When User click CTA button
-    And Contact info section displayed
-    When User click on Edit button
-    And enter invalid phone number
-    Then Error message displayed
+      """
+       Scenario: Question Section Functionality Testing with valid data
+         Given user is on Question page
+         And Landing page tab Header,ProgramName, UserName, Tracker display
+         And SectionHeader and Description field displayed
+         When User enter text in all text fields and click on Finish button
+         Then Confirmation page display
+      
+       Scenario: Testing without entering optional data
+          Given User is on PHS page.
+         #When User login with his credentials of HSID
+         Then Authenticated landing page displayed
+         And Tabs like Header,ProgramName, UserName, Tracker CTC and Request call button display
+         When User click on Request call button
+         Then Preferred Time section displayed
+         When User click CTA button
+         Then The Tracker updates to show progression
+         And Contact info section displayed
+         And User click on Next button
+         Then Question section tab display
+         When User click on Finish button
+         Then Confirmation page display
+      
+       Scenario: Testing with invalid data
+         Given User is on PHS page.
+         #When User login with his credentials of HSID
+         Then Authenticated landing page displayed
+         And Tabs like Header,ProgramName, UserName, Tracker CTC and Request call button display
+         When User click on Request call button
+         Then Preferred Time section displayed
+         When User click CTA button
+         And Contact info section displayed
+         When User click on Edit button
+         And enter invalid phone number
+         Then Error message displayed
+      """
