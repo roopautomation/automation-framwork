@@ -148,7 +148,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	timeFramCheckBox.isDisplayed();
 	}
     public void anyTimeCheckBoxDefaultSelected(){
-    	anyTimeCheckBox.isSelected();
+    	Assert.assertTrue("Any time checkbox is not default selected",anyTimeCheckBox.isSelected());
 	}
     public void anyTimeCheckBoxIsNotSelected(){
     	Assert.assertFalse(anyTimeCheckBox.isSelected());

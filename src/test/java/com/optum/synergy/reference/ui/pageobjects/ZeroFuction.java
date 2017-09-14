@@ -28,13 +28,14 @@ public class ZeroFuction {
 	
 	driver.findElement(By.id("btn-section-1")).click();
 	Thread.sleep(2000);
-	driver.findElement(By.id("btn-section-2")).click();
-	Thread.sleep(2000);
+	System.out.println(driver.findElement(By.id("checkbox1")).isSelected());
+	//driver.findElement(By.id("btn-section-2")).click();
+	//Thread.sleep(2000);
 	//System.out.println(driver.findElement(By.cssSelector(".pre-call__contact-info.text-left.fade")).isDisplayed());
-	driver.findElement(By.xpath("//*[contains(text(),'Edit')]")).click();
-	Thread.sleep(1000);
-	System.out.println("Phone>>>"+driver.findElement(By.xpath("//*[contains(text(),'Phone')]/following::input")).isDisplayed());
-	System.out.println("DD>>>"+driver.findElement(By.xpath("//*[contains(text(),'Phone')]/following::select")).isDisplayed());
+	//driver.findElement(By.xpath("//*[contains(text(),'Edit')]")).click();
+	//Thread.sleep(1000);
+	//System.out.println("Phone>>>"+driver.findElement(By.xpath("//*[contains(text(),'Phone')]/following::input")).isDisplayed());
+	//System.out.println("DD>>>"+driver.findElement(By.xpath("//*[contains(text(),'Phone')]/following::select")).isDisplayed());
 	
 	/*WebElement trackBar=driver .findElement(By.cssSelector(".progress-tracker-bar"));
      List<WebElement> noOfCircle= trackBar.findElements(By.xpath(".//li[contains(@class,'complete')]"));
