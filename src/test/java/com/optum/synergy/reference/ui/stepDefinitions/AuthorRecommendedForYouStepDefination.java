@@ -65,7 +65,7 @@ public class AuthorRecommendedForYouStepDefination {
 	@Given("^CallBackDetail,displayed and AnyTime is default selected$")
 	public void callbackdetail_displayed_and_AnyTime_is_default_selected() throws Throwable {
 		recomendForyou.ctcFuctionFieldDisplayed();
-		recomendForyou.anyTimeCheckBoxDefaultSelected();
+		//recomendForyou.anyTimeCheckBoxDefaultSelected();
 	}
 
 	@When("^User select different time$")
@@ -143,6 +143,7 @@ public class AuthorRecommendedForYouStepDefination {
 	@When("^User click on Next button$")
 	public void user_click_on_Next_button() throws Throwable {
 		recomendForyou.clickOnContactInfoNextBtn();
+		Thread.sleep(2000);
 	}
 
 	@Then("^Question section tab display$")
@@ -151,12 +152,36 @@ public class AuthorRecommendedForYouStepDefination {
 	}
 
 	@Then("^Tracker status updated$")
-	public void tracker_status_updated(String arg1) throws Throwable {
-		//recomendForyou.thirdTrackerCircalComplete();
+	public void tracker_status_updated() throws Throwable {
+		recomendForyou.thirdTrackerCircalComplete();
 	}
 
-	
-	
+@Given("^user is on Question page$")
+public void user_is_on_Question_page() throws Throwable {
+	Assert.assertTrue("Question Section not displayed ",recomendForyou.questionSectionDisplayed());
+}
+
+@Given("^PreCall SectionHeader and Description field displayed$")
+public void preCall_sectionheader_and_Description_field_displayed() throws Throwable {
+	recomendForyou.preCallSectionHeaderDisplayed();
+}
+
+@When("^User enter text in all text fields and click on Finish button$")
+public void user_enter_text_in_all_text_fields_and_click_on_Finish_button() throws Throwable {
+	recomendForyou.enterTextInFirstTextBox();
+	recomendForyou.enterTextInSecondTextBox();
+	recomendForyou.enterTextInThirdTextBox();
+	recomendForyou.clickOnFinishButton();
+}
+
+@Then("^Confirmation page display$")
+public void confirmation_page_display() throws Throwable {
+   Assert.assertTrue("Confirmation Page Does not displayed",recomendForyou.confirmationPageDisplayed());
+}
+	@When("^User click on Finish button$")
+	public void user_click_on_Finish_button()throws Throwable{
+		recomendForyou.clickOnFinishButton();
+	}
 	
 
 }

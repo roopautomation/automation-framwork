@@ -24,7 +24,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 }
 	
 
-	@FindBy(how = How.CSS, using = ".pre-call__heading")
+	@FindBy(how = How.XPATH, using = ".//div[text()='Health Support for']")
 	private WebElement pageHeader;
 	
 
@@ -92,14 +92,32 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.ID, using = "btn-section-3")
 	private WebElement nextBtnCotactPage;
 	
+	@FindBy(how = How.ID, using = "btn-section-4")
+	private WebElement finishBtnQuestionPage;
+	
+	@FindBy(how = How.CSS, using = ".pre-call__questions-heading")
+	private WebElement prCallSectionHeader;
+	
 	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-4']/preceding::textarea/parent::div")
-	private WebElement qustionSection;
+	private WebElement questionSection;
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-4']/preceding::textarea[3]")
+	private WebElement questionAnsBox1;
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-4']/preceding::textarea[2]")
+	private WebElement questionAnsBox2;
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-4']/preceding::textarea[1]")
+	private WebElement questionAnsBox3;
 	
 	@FindBy(how = How.ID, using = "")
 	private WebElement emailErrorMsg;
 	
 	@FindBy(how = How.XPATH, using = "")
 	private WebElement phonErrorMsg;
+	
+	@FindBy(how=How.CSS,using=".pre-call__confirmation")
+	private WebElement confirmationPage;
 	
 	
 	public void launchRecommendedPage(){
@@ -190,9 +208,11 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	}
     public void clickOnNextButtonOfPreferTimePage(){
     	nextBtnPrefTime.click();
+    	
 	}
     public void thirdTrackerCircalComplete(){
     	List<WebElement> noOfCircle= trackerBar.findElements(By.xpath(".//li[contains(@class,'complete')]"));
+    	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noOfCircle);
 		Assert.assertEquals(3,noOfCircle.size());
 	}
 			
@@ -215,9 +235,27 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	public void clickOnContactInfoNextBtn(){
 		nextBtnCotactPage.click();
 	}
-public void questionSectionDisplayed(){
-	qustionSection.isDisplayed();
-}
+	public void preCallSectionHeaderDisplayed(){
+		prCallSectionHeader.isDisplayed();
+	}
+    public boolean questionSectionDisplayed(){
+	return questionSection.isDisplayed();
+    }
+    public void enterTextInFirstTextBox(){
+	questionAnsBox3.sendKeys(">>>>>>>>>>>I Am healthy>>>>>>>>>>");
+    }
+    public void enterTextInSecondTextBox(){
+    	questionAnsBox2.sendKeys(">>>>.My Treatment is going good>>>>>>>>");
+    }
+    public void enterTextInThirdTextBox(){
+    	questionAnsBox1.sendKeys(">>>>>>>>>No Thanks>>>>>>>>>>");
+    }
+    public void clickOnFinishButton(){
+    	finishBtnQuestionPage.click();
+    }
+    public boolean confirmationPageDisplayed(){
+    	return confirmationPage.isDisplayed();
+    }
 	
 	
 }
