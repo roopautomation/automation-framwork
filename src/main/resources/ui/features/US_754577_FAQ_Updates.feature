@@ -1,4 +1,5 @@
 #Author: Sukhwinder Singh
+@sprint3
 Feature: FAQ Updates to default state open
 
   Scenario: FAQ page displays with all questions defauld open

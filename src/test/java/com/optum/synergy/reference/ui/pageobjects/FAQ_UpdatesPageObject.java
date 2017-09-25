@@ -2,7 +2,11 @@ package com.optum.synergy.reference.ui.pageobjects;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.json.simple.parser.ParseException;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -13,6 +17,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+
 
 public class FAQ_UpdatesPageObject extends PageObjectBase {
 
@@ -46,11 +52,20 @@ public class FAQ_UpdatesPageObject extends PageObjectBase {
 	}
 	
 	public void verifyFooterSectionDisplay(){
-		faqLink.click();		
+		faqLink.isDisplayed();		
 	}
 	public void verifyNewTabTitle(String title){
     	helper.newTabOpenAndTitleVerify(title);
     	
+	}
+	public void verifyNewTabTitle1(String title){
+		List<String> browserTabs = new ArrayList<String> (driver.getWindowHandles());
+    	for(String pagTitle:browserTabs){
+    		if(pagTitle==title){
+    		Assert.assertTrue(true);
+    		System.out.println(">>>Title verified>>>");
+    		}break;
+    	}
 	}
 	public String textColor(){
 		String color=openCloseArrow.getCssValue("color");

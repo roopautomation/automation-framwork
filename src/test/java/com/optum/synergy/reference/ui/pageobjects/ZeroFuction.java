@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,13 +23,16 @@ public class ZeroFuction {
 		 driver =new FirefoxDriver();
 	//System.setProperty("webdriver.chrome.driver", "C:\\Users\\ssing281\\Downloads\\Drivers\\chromedriver.exe");
 	//WebDriver driver =new ChromeDriver();
-	//driver.get("https://test-populationhealth.optum.com/content/phs/en/phs.html");
-	driver.get("https://test-populationhealth.optum.com/content/phs/en/secure/recommended-for-you.html");
+	driver.get("https://test-populationhealth.optum.com/content/phs/en/phs.html");
+	//driver.get("https://test-populationhealth.optum.com/content/phs/en/secure/recommended-for-you.html");
 	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	Dimension size=driver.findElement(By.id("carousel-ind-0")).getSize();
+	System.out.println("First circle>>>"+size);
 	
-	driver.findElement(By.id("btn-section-1")).click();
 	Thread.sleep(2000);
-	System.out.println(driver.findElement(By.id("checkbox1")).isSelected());
+	String indexN=driver.findElement(By.xpath(".//*[@id='testimonial-carousel']/ol/li[1]")).findElement(By.xpath("./a")).getAttribute("data-slide-to");
+	System.out.println("Second circle>>>"+indexN);
+	System.out.println("int value>>"+Integer.parseInt(indexN));
 	//driver.findElement(By.id("btn-section-2")).click();
 	//Thread.sleep(2000);
 	//System.out.println(driver.findElement(By.cssSelector(".pre-call__contact-info.text-left.fade")).isDisplayed());

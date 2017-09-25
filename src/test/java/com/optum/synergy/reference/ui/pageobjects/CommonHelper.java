@@ -160,6 +160,24 @@ public class CommonHelper extends PageObjectBase  {
 		//driver.close();
 		//driver.switchTo().window(browserTabs.get(0));
 	}
+	public void newTabOpenAndTitleVerifyAndClose(String title){
+		List<String> browserTabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(browserTabs .get(1));
+		
+		try 
+		{
+			new WebDriverWait(driver, 20).until(ExpectedConditions.titleContains(title));
+			Assert.assertTrue(true);
+			System.out.println("Page loaded Successfully");
+			//log.info("Login Successfully");
+		} catch (Error e) 
+		
+		{
+			System.out.println("======Page not Poaded===");
+		}
+		driver.close();
+		driver.switchTo().window(browserTabs.get(0));
+	}
 	public ExpectedCondition<Boolean> numberOfWindowsToBe(final int numberOfWindows) {
 	    return new ExpectedCondition<Boolean>() {
 	      @Override

@@ -25,7 +25,7 @@ public class CucumberRunnerTest_ui {
     @AfterClass
     public static void tearDown()
     {
-    	WebController.closebrowser();
+    	WebController.closebrowser();;
     }
     @BeforeClass
     public static void setup() {
@@ -37,8 +37,8 @@ public class CucumberRunnerTest_ui {
 
         // User can add the system information as follows
         ExtentCucumberFormatter.addSystemInfo("Browser Name", "Firefox");
-        ExtentCucumberFormatter.addSystemInfo("Browser version", "v50.0");
-        ExtentCucumberFormatter.addSystemInfo("Selenium version", "v2.53.0");
+        ExtentCucumberFormatter.addSystemInfo("Browser version", "v52.3");
+        ExtentCucumberFormatter.addSystemInfo("Selenium version", "v3.4.0");
 
       
     } 

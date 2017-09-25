@@ -50,7 +50,7 @@ public class PrintVideoTranscriptStepDefination {
 	}
 	@Then("^User Verify title of new TAB \"([^\"]*)\"$")
 	public void user_Verify_title_of_new_TAB(String title) throws Throwable {
-	   helper.newTabOpenAndTitleVerify(title);
+	   helper.newTabOpenAndTitleVerifyAndClose(title);
 	   ExtentCucumberFormatter.setTestRunnerOutput("INFO:New TAB Title verified");
 	   Thread.sleep(1000);
 	}

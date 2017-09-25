@@ -23,11 +23,11 @@ public class CarouselComponentPageObject extends PageObjectBase {
 	private WebElement caroselComponent;
 	
 
-	@FindBy(how = How.CSS, using = ".right.carousel-control.hidden-xs")
+	@FindBy(how = How.ID, using = "carousel-next")
 	private WebElement rightCarouselControlCaret;
 	
 
-	@FindBy(how = How.CSS, using = ".left.carousel-control.hidden-xs")
+	@FindBy(how = How.ID, using = "carousel-prev")
 	private WebElement leftCarouselControlCaret;
 	
 	public void scroolToCarouselSection(){
@@ -40,9 +40,10 @@ public class CarouselComponentPageObject extends PageObjectBase {
     public void clickOnLeftCarouselCaret(){
     	leftCarouselControlCaret.click();
 	}
-    public void accessRightCarouselCaretsWithTABandENTER(){
+    public void accessRightCarouselCaretsWithTABandENTER() {
 		rightCarouselControlCaret.sendKeys(Keys.TAB);
 		rightCarouselControlCaret.sendKeys(Keys.ENTER);
+		
 	}
     
     public void accessLeftCarouselCaretsWithTABandENTER(){
@@ -51,17 +52,21 @@ public class CarouselComponentPageObject extends PageObjectBase {
 	}
 	public int slidingIndicatorPosition(){
 		List<WebElement> elementsA=driver.findElements(By.cssSelector(".carousel-indicators>li"));
-		int indexA = -1;
+		int indexA =-1 ;
 		for(WebElement eleA:elementsA){
 			if(eleA.getAttribute("class").contains("active")) {
-				indexA = Integer.parseInt(eleA.getAttribute("data-slide-to"));
+				
+				//System.out.println("hassel position>>>>"+eleA.findElement(By.xpath("./a")).getAttribute("data-slide-to"));
+				System.out.println(">>>>VALUE2 <<<<<||||||"+Integer.parseInt(eleA.findElement(By.xpath("./a")).getAttribute(" data-slide-to")));
+				 indexA = Integer.parseInt(eleA.findElement(By.xpath("./a")).getAttribute(" data-slide-to"));
+				System.out.println(indexA);
 				break;
 			}
 			
+	}return indexA;
+		
 	}
-		return indexA;
-	}
-
+	
 	
 	
 }

@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@sprint2
+@sprint3
 Feature: Back to top button key accessible.
 
   Scenario: Access back to top button with tab key.

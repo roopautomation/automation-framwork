@@ -212,7 +212,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	}
     public void thirdTrackerCircalComplete(){
     	List<WebElement> noOfCircle= trackerBar.findElements(By.xpath(".//li[contains(@class,'complete')]"));
-    	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noOfCircle);
+    	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noOfCircle.size());
 		Assert.assertEquals(3,noOfCircle.size());
 	}
 			

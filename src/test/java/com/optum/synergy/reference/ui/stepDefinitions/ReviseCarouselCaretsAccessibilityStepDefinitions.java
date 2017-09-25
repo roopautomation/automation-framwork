@@ -15,7 +15,7 @@ public class ReviseCarouselCaretsAccessibilityStepDefinitions {
 	LandingFooterPageObject page = new LandingFooterPageObject(helper);
 	CarouselComponentPageObject carousel=new CarouselComponentPageObject(helper);
 	
-    int  positionBeforeEnter;
+    int positionBeforeEnter;
 	int positionAfterEnter;
 	int positionBeforeClick;
 	int positionAfterClick;
@@ -26,7 +26,9 @@ public class ReviseCarouselCaretsAccessibilityStepDefinitions {
 	}
 	@Then("^User note sliding indicator position\\.$")
 	public void user_note_sliding_indicator_position() throws Throwable {
-		positionBeforeEnter=carousel.slidingIndicatorPosition();
+		Thread.sleep(2000);
+		System.out.println("Position is First "+carousel.slidingIndicatorPosition());
+	   // positionBeforeEnter=carousel.slidingIndicatorPosition();
 		
 	}
 
@@ -38,7 +40,7 @@ public class ReviseCarouselCaretsAccessibilityStepDefinitions {
 
 	@Then("^Slide display in carousel is moved to next\\.$")
 	public void slide_display_in_carousel_is_moved_to_next() throws Throwable {
-		
+		System.out.println("Position is second "+carousel.slidingIndicatorPosition());
 		Assert.assertNotEquals(positionBeforeEnter, (carousel.slidingIndicatorPosition()));
 	    
 	}
@@ -58,6 +60,7 @@ public class ReviseCarouselCaretsAccessibilityStepDefinitions {
 	@Then("^User access Right carets Carousel with TAB key and ENTER\\.$")
 	public void user_access_Right_carets_Carousel_with_TAB_key_and_ENTER() throws Throwable {
 		carousel.accessRightCarouselCaretsWithTABandENTER();
+		Thread.sleep(1000);
 	}
 
 	@When("^User click on Left carets Carousel\\.$")

@@ -1,4 +1,5 @@
 # Author: Sukhwinder Singh
+@sprint3
 Feature: Video with Transcript Drawer & Analytics
 
   Scenario: Video component without content in Transcrip

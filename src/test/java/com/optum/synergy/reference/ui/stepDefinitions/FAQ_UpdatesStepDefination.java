@@ -22,11 +22,12 @@ public class FAQ_UpdatesStepDefination {
 	FAQ_UpdatesPageObject faqPage = new FAQ_UpdatesPageObject(helper);
 	
 	String defaultColor;
-	String aterExpandColor;
+	
 	
 	@When("^User scroll to footer$")
 	public void user_scroll_to_footer() throws Throwable {
 		faqPage.scroolToFooterSection();
+		//ExtentCucumberFormatter.setTestRunnerOutput("Footer sec tion displayed");
 	}
 
 	@When("^User click on FAQ link$")
@@ -37,15 +38,18 @@ public class FAQ_UpdatesStepDefination {
 	public void default_FAQs_are_closed_with_Text_color(String color) throws Throwable {
 		System.out.println(faqPage.openCloseButtonStatus());
 		//Assert.assertThat(faqPage.openCloseButtonStatus(), CoreMatchers.containsString("false"));
-		 Assert.assertThat(faqPage.openCloseButtonStatus(), is(not("true")));
+		Assert.assertThat("Default FAQs are not closed",faqPage.openCloseButtonStatus(), is(not("true")));
+		//ExtentCucumberFormatter.setTestRunnerOutput("Defsult FAQ are closed");
 		defaultColor=faqPage.textColor();
 		Assert.assertThat("Color of text is not as expected ",faqPage.textColor(), CoreMatchers.containsString(color));
-		
+		//ExtentCucumberFormatter.setTestRunnerOutput("Test color is as expected");
 	}
 	@Then("^FAQ page displayed with title \"([^\"]*)\"$")
 	public void faq_page_displayed_with_title(String title) throws Throwable {
 		helper.mediumWait.until(helper.numberOfWindowsToBe(2));
 		faqPage.verifyNewTabTitle(title);
+		//ExtentCucumberFormatter.setTestRunnerOutput("Title verified as expected");
+		
 	}
 	@When("^User click on open/close button$")
 	public void user_click_on_open_close_button() throws Throwable {
@@ -57,6 +61,7 @@ public class FAQ_UpdatesStepDefination {
 	   System.out.println(faqPage.openCloseButtonStatus());
 	   Assert.assertThat(faqPage.openCloseButtonStatus(), is("true"));
 	 Assert.assertThat(faqPage.textColor(), is(not(defaultColor)));
+	// ExtentCucumberFormatter.setTestRunnerOutput("Color of test chenged when clicked on open/close ");
 	}
 
 	
