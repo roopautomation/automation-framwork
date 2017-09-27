@@ -21,7 +21,7 @@ import cucumber.api.junit.Cucumber;
 		tags = { "@sprint3" },
 		snippets = SnippetType.CAMELCASE
 )
-public class CucumberRunnerTest_ui {
+public class CucumberRunnerTest {
     @AfterClass
     public static void tearDown()
     {

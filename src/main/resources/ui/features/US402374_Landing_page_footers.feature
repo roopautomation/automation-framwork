@@ -18,4 +18,4 @@ Feature: US402374 Landing Page Footers
     When User clicks Chinese Language Assistance link
     Then Language Assistance page loads
   ##  And all language assistance links display in 12 point font
-  ##  And all links are AEM authorable
+   And all links are AEM authorable
