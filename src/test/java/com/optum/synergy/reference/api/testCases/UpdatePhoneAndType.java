@@ -10,29 +10,22 @@ import com.jayway.restassured.internal.ResponseSpecificationImpl.HamcrestAsserti
 import com.jayway.restassured.response.Response;
 import static org.hamcrest.Matchers.*;
 
-public class GetMemberInfo 
+public class UpdatePhoneAndType 
 {
 
 	@Test
 	public void test1()
 	{
-		
-	 Response code= given().relaxedHTTPSValidation()
+		String body="{\"preferredPhoneNumber\": \"1212333333\",\"preferredPhoneType\": \"Work\"}";
+	 Response response= given().relaxedHTTPSValidation()
 			 .header("hsid", "1040285b-203f-4bfd-b7cb-7968e2456c8a")
 			 .log().all().contentType(ContentType.JSON)
-			 .get("https://tst-phs-services-np.ose-ctc-core.optum.com/phs/services/v1.0/secure/user");
-	 
-	 System.out.println("Response code is "+code.getStatusCode());
-	 
-	 Assert.assertEquals(200, code.getStatusCode());
-	 
-	 String data=code.asString();
+			 .body(body)
+			 .post("https://tst-phs-services-np.ose-ctc-core.optum.com/phs/services/v1.0/secure/user/preferredPhone")
+	         .then().extract().response();
+	 System.out.println("Response  is "+response.asString());
 	 
 	 
-	 
-	 boolean status=data.contains("Point");
- 
-	 Assert.assertTrue(status);
 		
 	}
 	
@@ -45,8 +38,8 @@ public class GetMemberInfo
 			 .log().all().contentType(ContentType.JSON)
 			 .get("https://tst-phs-services-np.ose-ctc-core.optum.com/phs/services/v1.0/secure/user");
 	
-	 code.then().body("lastName", equalTo("Jalio"));
-	 code.then().body("firstName", equalTo("Point"));
+	 code.then().body("preferredPhoneType", equalTo("Work"));
+	 code.then().body("preferredPhoneNumber", equalTo("1212333333"));
 		
 	}
 	

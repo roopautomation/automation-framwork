@@ -10,8 +10,7 @@ import com.jayway.restassured.internal.ResponseSpecificationImpl.HamcrestAsserti
 import com.jayway.restassured.response.Response;
 import static org.hamcrest.Matchers.*;
 
-public class GetMemberInfo 
-{
+public class VeifyMemberPhone extends ApiBaseClass{
 
 	@Test
 	public void test1()
@@ -19,8 +18,8 @@ public class GetMemberInfo
 		
 	 Response code= given().relaxedHTTPSValidation()
 			 .header("hsid", "1040285b-203f-4bfd-b7cb-7968e2456c8a")
-			 .log().all().contentType(ContentType.JSON)
-			 .get("https://tst-phs-services-np.ose-ctc-core.optum.com/phs/services/v1.0/secure/user");
+			 .log().all().contentType(ContentType.JSON).when()
+			 .get();
 	 
 	 System.out.println("Response code is "+code.getStatusCode());
 	 
