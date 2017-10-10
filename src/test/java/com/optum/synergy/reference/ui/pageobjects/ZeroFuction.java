@@ -13,6 +13,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ZeroFuction {
 	WebDriver driver;
@@ -23,16 +25,22 @@ public class ZeroFuction {
 		 driver =new FirefoxDriver();
 	//System.setProperty("webdriver.chrome.driver", "C:\\Users\\ssing281\\Downloads\\Drivers\\chromedriver.exe");
 	//WebDriver driver =new ChromeDriver();
-	driver.get("https://test-populationhealth.optum.com/content/phs/en/phs.html");
-	//driver.get("https://test-populationhealth.optum.com/content/phs/en/secure/recommended-for-you.html");
+		 //driver.get("https://test-populationhealth.optum.com/content/phs/en/phs.html");
+		 driver.manage().window().maximize();
+	driver.get("https://test-populationhealth.optum.com/content/phs/en/secure/recommended-for-you.html");
 	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	Dimension size=driver.findElement(By.id("carousel-ind-0")).getSize();
-	System.out.println("First circle>>>"+size);
 	
+	driver.findElement(By.id("btn-section-1")).click();
+	//Thread.sleep(2000);
+	WebDriverWait wait =new WebDriverWait(driver, 20);
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='checkbox4']/following::div[1]"))).click();
+	//driver.findElement(By.xpath(".//*[@id='mainContent']/div/div[2]/div[2]/form/fieldset/label[4]/div")).click();
+	System.out.println(driver.findElement(By.xpath(".//*[@id='checkbox1']/following::div[1]")).isSelected());
+	driver.findElement(By.id("btn-section-2")).click();
 	Thread.sleep(2000);
-	String indexN=driver.findElement(By.xpath(".//*[@id='testimonial-carousel']/ol/li[1]")).findElement(By.xpath("./a")).getAttribute("data-slide-to");
-	System.out.println("Second circle>>>"+indexN);
-	System.out.println("int value>>"+Integer.parseInt(indexN));
+	//String indexN=driver.findElement(By.xpath(".//*[@id='testimonial-carousel']/ol/li[1]")).findElement(By.xpath("./a")).getAttribute("data-slide-to");
+	//System.out.println("Second circle>>>"+indexN);
+	//System.out.println("int value>>"+Integer.parseInt(indexN));
 	//driver.findElement(By.id("btn-section-2")).click();
 	//Thread.sleep(2000);
 	//System.out.println(driver.findElement(By.cssSelector(".pre-call__contact-info.text-left.fade")).isDisplayed());

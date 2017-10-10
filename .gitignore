@@ -7,7 +7,7 @@ target/
 .project
 .settings
 .springBeans
-.exe
+
 
 ### IntelliJ IDEA ###
 .idea
@@ -176,6 +176,9 @@ maven-eclipse.xml
 
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# Output files
+output/
 
 # PDT-specific
 .buildpath

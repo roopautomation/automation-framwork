@@ -171,6 +171,7 @@ public void user_enter_text_in_all_text_fields_and_click_on_Finish_button() thro
 	recomendForyou.enterTextInFirstTextBox();
 	recomendForyou.enterTextInSecondTextBox();
 	recomendForyou.enterTextInThirdTextBox();
+	
 	recomendForyou.clickOnFinishButton();
 }
 

@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 
@@ -56,16 +56,16 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-2']//parent::form")
 	private WebElement timeFramCheckBox;
 	
-	@FindBy(how = How.ID, using = "checkbox1")
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox1']/following::div[1]")
 	private WebElement anyTimeCheckBox;
 	
-	@FindBy(how = How.ID, using = "checkbox2")
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox2']/following::div[1]")
 	private WebElement morningTimeCheckBox;
 	
-	@FindBy(how = How.ID, using = "checkbox3")
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox3']/following::div[1]")
 	private WebElement afternoonTimeCheckBox;
 	
-	@FindBy(how = How.ID, using = "checkbox4")
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox4']/following::div[1]")
 	private WebElement eveningTimeCheckBox;
 	
 	@FindBy(how = How.ID, using = "btn-section-2")
@@ -138,7 +138,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 		rqstCallBtn.isDisplayed();
 	}
 	public void clickRequestCallButton(){
-		rqstCallBtn.click();
+		smallWait.until(ExpectedConditions.visibilityOf(rqstCallBtn)).click();
 	}
 	public void ctcFuctionFieldDisplayed(){
 		ctcFnctnFld.isDisplayed();
@@ -152,7 +152,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	}
 	
 	public void firstTrackerCircalComplete(){
-		List<WebElement> noOfCircle1= trackerBar.findElements(By.xpath(".//li[contains(@class,'complete')]"));
+		List<WebElement> noOfCircle1= trackerBar.findElements(By.xpath(".//li[contains(@class,'--complete')]"));
 		Assert.assertEquals(1,noOfCircle1.size());
 		
 	}
@@ -173,13 +173,13 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	}  
     
     public void clickOnMorningTimeCheckbox(){
-    	morningTimeCheckBox.click();
+    	smallWait.until(ExpectedConditions.visibilityOf(morningTimeCheckBox)).click();
 	}
     public void clickOnAfternoonCheckbox(){
-    	afternoonTimeCheckBox.click();
+    	smallWait.until(ExpectedConditions.visibilityOf(afternoonTimeCheckBox)).click();
 	}
     public void clickOnEveningTimeCheckbox(){
-    	eveningTimeCheckBox.click();
+    	smallWait.until(ExpectedConditions.visibilityOf(eveningTimeCheckBox)).click();
 	}
     public void eveningTimeCheckboxIsNotChecked(){
     	eveningTimeCheckBox.isSelected();
@@ -193,7 +193,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     }
     
     public void secondTrackerCircleCompleted(){
-    	List<WebElement> noOfCircle= trackerBar.findElements(By.xpath(".//li[contains(@class,'complete')]"));
+    	List<WebElement> noOfCircle= trackerBar.findElements(By.xpath(".//li[contains(@class,'--complete')]"));
 		Assert.assertEquals(2,noOfCircle.size());
 	}
     public boolean contactInfoSectionDisplayed(){
@@ -211,7 +211,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	
 	}
     public void thirdTrackerCircalComplete(){
-    	List<WebElement> noOfCircle= trackerBar.findElements(By.xpath(".//li[contains(@class,'complete')]"));
+    	List<WebElement> noOfCircle= trackerBar.findElements(By.xpath(".//li[contains(@class,'--complete')]"));
     	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noOfCircle.size());
 		Assert.assertEquals(3,noOfCircle.size());
 	}
@@ -224,7 +224,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	phonErrorMsg.isDisplayed();
 	}
     public void clickOnEditLink(){
-    	editBtn.click();
+    	smallWait.until(ExpectedConditions.visibilityOf(editBtn)).click();
     }
 	public boolean phoneFieldDisplayed(){
 		return phoneField.isDisplayed();
@@ -242,16 +242,20 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	return questionSection.isDisplayed();
     }
     public void enterTextInFirstTextBox(){
-	questionAnsBox3.sendKeys(">>>>>>>>>>>I Am healthy>>>>>>>>>>");
+    	questionAnsBox3.clear();
+	    questionAnsBox3.sendKeys(">>>>>>>>>>>I Am healthy>>>>>>>>>>");
     }
     public void enterTextInSecondTextBox(){
+    	questionAnsBox2.clear();
     	questionAnsBox2.sendKeys(">>>>.My Treatment is going good>>>>>>>>");
     }
     public void enterTextInThirdTextBox(){
+    	questionAnsBox1.clear();
     	questionAnsBox1.sendKeys(">>>>>>>>>No Thanks>>>>>>>>>>");
     }
-    public void clickOnFinishButton(){
+    public void clickOnFinishButton() throws Throwable{
     	finishBtnQuestionPage.click();
+    	Thread.sleep(1000);
     }
     public boolean confirmationPageDisplayed(){
     	return confirmationPage.isDisplayed();

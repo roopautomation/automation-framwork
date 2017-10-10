@@ -1,6 +1,7 @@
 package com.optum.synergy.reference.api.testCases;
 
 import org.hamcrest.core.Is;
+import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,13 +15,18 @@ public class UpdatePhoneAndType
 {
 
 	@Test
-	public void test1()
-	{
-		String body="{\"preferredPhoneNumber\": \"1212333333\",\"preferredPhoneType\": \"Work\"}";
+	public void test1(){
+		 // use org.json JSONObject to define your json
+		   JSONObject jsonObj = new JSONObject()
+		                             .put("preferredPhoneNumber","1212333333")
+		                             .put("preferredPhoneType","Home");
+
+		
+		//String body="{\"preferredPhoneNumber\": \"1212333333\",\"preferredPhoneType\": \"Work\"}";
 	 Response response= given().relaxedHTTPSValidation()
 			 .header("hsid", "1040285b-203f-4bfd-b7cb-7968e2456c8a")
 			 .log().all().contentType(ContentType.JSON)
-			 .body(body)
+			 .body(jsonObj.toString())
 			 .post("https://tst-phs-services-np.ose-ctc-core.optum.com/phs/services/v1.0/secure/user/preferredPhone")
 	         .then().extract().response();
 	 System.out.println("Response  is "+response.asString());
@@ -38,7 +44,7 @@ public class UpdatePhoneAndType
 			 .log().all().contentType(ContentType.JSON)
 			 .get("https://tst-phs-services-np.ose-ctc-core.optum.com/phs/services/v1.0/secure/user");
 	
-	 code.then().body("preferredPhoneType", equalTo("Work"));
+	 code.then().body("preferredPhoneType", equalTo("Home"));
 	 code.then().body("preferredPhoneNumber", equalTo("1212333333"));
 		
 	}

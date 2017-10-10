@@ -1,4 +1,4 @@
-package com.optum.synergy.reference.api.testCases;
+package com.optum.synergy.reference.api.stepDefinations;
 
 import static com.jayway.restassured.RestAssured.*;
 

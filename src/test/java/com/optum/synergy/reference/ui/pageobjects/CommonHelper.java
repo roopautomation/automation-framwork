@@ -144,6 +144,7 @@ public class CommonHelper extends PageObjectBase  {
 	}
 	public void newTabOpenAndTitleVerify(String title){
 		List<String> browserTabs = new ArrayList<String> (driver.getWindowHandles());
+		
 		driver.switchTo().window(browserTabs .get(1));
 		
 		try 
@@ -187,6 +188,17 @@ public class CommonHelper extends PageObjectBase  {
 	      }
 	    };
 	}
+	
+	
+	public boolean  numberOfWindowsToBe1(CommonHelper helper,int windows)
+	{
+	
+		boolean status=helper.longWait.until(ExpectedConditions.numberOfwindowsToBe(windows));
+		
+		return status;
+	}
+	
+	
 	
 	 public void checkAndPrintScrollStatus(){
 		  JavascriptExecutor javascript = (JavascriptExecutor) driver;

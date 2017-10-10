@@ -118,6 +118,7 @@ public class LandingFooterPageObject extends PageObjectBase {
 
 	public void openPage() throws FileNotFoundException, IOException, ParseException {
 		page_url = getEnvVariable("landingPageUrl");
+		//page_url = "https://test-populationhealth.optum.com/content/phs/en/phs.html";
 		helper.openPage(page_url);
 	}
 	public void scroolToFooterSection(){

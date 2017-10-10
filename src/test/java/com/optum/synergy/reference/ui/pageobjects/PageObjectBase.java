@@ -19,7 +19,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.optum.synergy.common.ui.controller.WebController;
+//import com.optum.synergy.common.ui.controller.WebController;
+import com.optum.synergy.reference.ui.DriverFactory;
 
 public class PageObjectBase {
 
@@ -36,16 +37,16 @@ public class PageObjectBase {
 public String uuid="";
 	public static final String USERNAME = System.getenv("SAUCE_USERNAME");
 	public static final String ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
-	public static final String SAUCE_URL = "http://" + USERNAME + ":" + ACCESS_KEY
+	public static final String SAUCE_URL = "http://" + "ssing281" + ":" + "da0a17fc-d6ec-452c-a095-b2abebacfe49"
 			+ "@ondemand.saucelabs.com:80/wd/hub";
 
 	// TODO: Refactor to use default or system variable
-	protected static final String CONFIG_FILE_RELATIVE_PATH = "src/main/resources/ui/config/config_browser.json";
+	protected static final String CONFIG_FILE_RELATIVE_PATH = "src/main/resources/ui/config/config_broser.json";
 	/* "/src/main/resources/ui/config/config.json"; */
 
 	protected CommonHelper helper;
 
-	public WebDriver driver;
+	public static WebDriver driver;
 
 	public PageObjectBase() {
 		try {
@@ -53,12 +54,15 @@ public String uuid="";
 				/*driver = createLocalDriver();
 				driver.manage().window().maximize();*/
 				System .setProperty("webdriver.gecko.driver", "./GeckoDriver/0.17.0/geckodriver.exe");
-				driver =WebController.createAndGetDeviceDriver(CONFIG_FILE_RELATIVE_PATH);
-				WebController.maximizeWindow();
+				//driver =WebController.createAndGetDeviceDriver(CONFIG_FILE_RELATIVE_PATH);
+				//driver=BrowserFactory.getBrowserOnCloud();
+				driver = DriverFactory.createAndGetDeviceDriver();
+				
+				System.out.println("Driver value is "+driver);
+				//WebController.maximizeWindow();
+			
 				//driver.manage().deleteAllCookies();
-				smallWait = new WebDriverWait(driver, 10);
-				mediumWait = new WebDriverWait(driver, 30);
-				longWait = new WebDriverWait(driver, 60);
+				
 				//System.out.println(getSystemVariable("environment.type"));
 				//Following method will delete all the screenshots in taget folder
 			/*	File index = new File("target\\screenshots");
@@ -70,6 +74,10 @@ public String uuid="";
 				*/
 				
 			}
+			
+			smallWait = new WebDriverWait(driver, 10);
+			mediumWait = new WebDriverWait(driver, 30);
+			longWait = new WebDriverWait(driver, 60);
 			 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

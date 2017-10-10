@@ -57,17 +57,4 @@ Feature: Author Recommended for You page
     Then Question section tab display
     When User click on Finish button
     Then Confirmation page display
-      """
-       Scenario: Testing with invalid data
-          Given User is on PHS page.
-          #When User login with his credentials of HSID
-          Then Authenticated landing page displayed
-          And Tabs like Header,ProgramName, UserName, Tracker CTC and Request call button display
-          When User click on Request call button
-          Then Preferred Time section displayed
-          When User click CTA button
-          And Contact info section displayed
-          When User click on Edit button
-          And enter invalid phone number
-          Then Error message displayed
-      """
+      

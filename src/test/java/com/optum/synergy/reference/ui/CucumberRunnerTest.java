@@ -25,7 +25,8 @@ public class CucumberRunnerTest {
     @AfterClass
     public static void tearDown()
     {
-    	WebController.closebrowser();;
+    	DriverFactory.closeDeviceDriver();
+    	//BrowserFactory.closeBrowser();
     }
     @BeforeClass
     public static void setup() {
@@ -40,6 +41,9 @@ public class CucumberRunnerTest {
         ExtentCucumberFormatter.addSystemInfo("Browser version", "v52.3");
         ExtentCucumberFormatter.addSystemInfo("Selenium version", "v3.4.0");
 
+        System.setProperty("BrowserVersion", "52");
+		System.setProperty("BrowserType", "Firefox");
+		System.setProperty("BrowserEnv", "saucelab");   // local browser or sauceLabs browser
       
     } 
     
