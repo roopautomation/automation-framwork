@@ -57,7 +57,7 @@ public String uuid="";
 				//driver =WebController.createAndGetDeviceDriver(CONFIG_FILE_RELATIVE_PATH);
 				//driver=BrowserFactory.getBrowserOnCloud();
 				driver = DriverFactory.createAndGetDeviceDriver();
-				
+				System.out.println("Running Page Object Class");
 				System.out.println("Driver value is "+driver);
 				//WebController.maximizeWindow();
 			

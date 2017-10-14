@@ -115,12 +115,12 @@ public class AuthorRecommendedForYouStepDefination {
 	@Given("^User Email and phone Display$")
 	public void user_Email_and_phone_Display() throws Throwable {
 		recomendForyou.emailDisplayed();
-		recomendForyou.PhoneDisplayed(); 
+		//recomendForyou.PhoneDisplayed(); 
 		
 	}
 	@When("^User click on Edit button$")
 	public void user_click_on_Edit_button() throws Throwable {
-		recomendForyou.clickOnEditLink();
+		recomendForyou.clickOnEditPhoneLink();
 	}
 
 	@Then("^Phone field and dropdown field displayed$")
@@ -131,7 +131,7 @@ public class AuthorRecommendedForYouStepDefination {
 
 	@Then("^default phone type displayed$")
 	public void default_phone_type_displayed() throws Throwable {
-	//Assert.	assertEquals(recomendForyou.defaultSelectedOptionInPhoneDD(),anyOf(is("Home"),is("Cell"),is("Work"),is("TTY"))); 
+	Assert.	assertEquals(recomendForyou.defaultSelectedOptionInPhoneDD(),anyOf(is("Home"),is("Cell"),is("Work"),is("TTY"))); 
 	
 	}
 

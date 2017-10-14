@@ -17,21 +17,24 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 	    plugin = { "pretty", "html:target/cucumber","json:target/cucumber.json","com.cucumber.listener.ExtentCucumberFormatter"}, 
-		features = { "src/main/resources/ui/features" },
-		tags = { "@sprint3" },
+		features = { "src/main/resources/ui/features/api" },glue={"src/test/java/com.optum.synergy.reference.api.stepDefinations"},
 		snippets = SnippetType.CAMELCASE
 )
-public class CucumberRunnerTest {
+public class CucumberRunnerTestAPI {
     @AfterClass
     public static void tearDown()
     {
+    	  System.out.println("Starting teardown");
     	DriverFactory.closeDeviceDriver();
+    	  System.out.println("Closing Setup");
     	//BrowserFactory.closeBrowser();
     }
     @BeforeClass
     public static void setup() {
         // Initiates the extent report and generates the output in the output/Run_<unique timestamp>/report.html file by default.
-        ExtentCucumberFormatter.initiateExtentCucumberFormatter();
+        System.out.println("Starting Setup");
+    	
+    	ExtentCucumberFormatter.initiateExtentCucumberFormatter();
 
         // Loads the extent config xml to customize on the report.
         ExtentCucumberFormatter.loadConfig(new File("src/main/resources/extent-config.xml"));
@@ -43,7 +46,9 @@ public class CucumberRunnerTest {
 
         System.setProperty("BrowserVersion", "52");
 		System.setProperty("BrowserType", "Firefox");
-		System.setProperty("BrowserEnv", "saucelab");   // local browser or sauceLabs browser
+		System.setProperty("BrowserEnv", "local");   // local browser or sauceLabs browser
+		
+		  System.out.println("Closing Setup");
       
     } 
     

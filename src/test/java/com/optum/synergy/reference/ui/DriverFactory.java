@@ -21,7 +21,7 @@ public class DriverFactory {
 
 	private final static String DEFAULT_BROWSERTYPE = "FIREFOX";
 	private final static String DEFAULT_BROWSERVERSION = "52";
-	private final static String DEFAULT_BROWSERENV = "local";
+	private final static String DEFAULT_BROWSERENV = "saucelab";
 	// TODO: Find a better choice of default SauceLabs credentials
 	private final static String DEFAULT_SAUCE_USER = "rtripa1";
 	private final static String DEFAULT_SAUCE_ACCESSKEY = "2eba6f36-0e3e-434d-9ea5-80374080cb92";

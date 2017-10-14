@@ -77,13 +77,34 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Email address')]/parent::div/following::div[1]")
 	private WebElement email;
 	
-	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Phone')]/parent::div/following::div[1]")
-	private WebElement phone;
+	@FindBy(how = How.XPATH, using=".//*[@id='checkboxemail']/following::div[1]")
+	private WebElement sendEmailBtn;
 	
-	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Edit')]")
-	private WebElement editBtn;
+	@FindBy(how = How.ID, using = "errmsg-phone-invalid")
+	private WebElement phoneErrorMsg;
 	
-	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Phone')]/following::input")
+	@FindBy(how = How.XPATH, using=".//*[@id='checkboxemail']/following::div[1]/following::a[1]")
+	private WebElement editEmailLink;
+	
+	@FindBy(how = How.ID, using = "errmsg-email-invalid")
+	private WebElement emailErrorMsg;
+	
+	@FindBy(how = How.XPATH, using=".//*[@id='checkboxemail']/following::div[1]/following::a[1]")
+	private WebElement confirmEmailField;
+	
+	@FindBy(how = How.ID, using = "errmsg-confemail-invalid")
+	private WebElement confirmEmailErrorMsg;
+	
+	@FindBy(how = How.XPATH, using=".//*[@id='checkboxemail']/following::input[1]")
+	private WebElement emailField;
+	
+	@FindBy(how = How.XPATH, using=".//*[@id='btn-section-2']/preceding::input[1]")
+	private WebElement cofirmEmailField;
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/preceding::a[1]")
+	private WebElement phoneEditLink;
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/following::div[1]/preceding::input[2]")
 	private WebElement phoneField;
 	
 	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Phone')]/following::select")
@@ -109,9 +130,6 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	
 	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-4']/preceding::textarea[1]")
 	private WebElement questionAnsBox3;
-	
-	@FindBy(how = How.ID, using = "")
-	private WebElement emailErrorMsg;
 	
 	@FindBy(how = How.XPATH, using = "")
 	private WebElement phonErrorMsg;
@@ -203,9 +221,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	public void emailDisplayed(){
 		email.isDisplayed();
 	}
-	public void PhoneDisplayed(){
-		phone.isDisplayed();
-	}
+	
     public void clickOnNextButtonOfPreferTimePage(){
     	nextBtnPrefTime.click();
     	
@@ -223,15 +239,28 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     public void phoneErrorMsgDisplayed(){
     	phonErrorMsg.isDisplayed();
 	}
-    public void clickOnEditLink(){
-    	smallWait.until(ExpectedConditions.visibilityOf(editBtn)).click();
+    public void clickOnEditPhoneLink(){
+    	smallWait.until(ExpectedConditions.visibilityOf(phoneEditLink)).click();
     }
+    public void typePhoneNumber(String phone){
+    	phoneField.sendKeys(phone);
+    }
+    
 	public boolean phoneFieldDisplayed(){
 		return phoneField.isDisplayed();
 	}
 	public boolean phoneTypeDropdownFieldDisplayed(){
 		return phonTypeDD.isDisplayed();
 	}
+	 public void clickOnEditEmailLink(){
+	    	smallWait.until(ExpectedConditions.visibilityOf(editEmailLink)).click();
+    }
+	 public void typeEmailAddress(String email){
+		 emailField.sendKeys(email);
+	 }
+	 public void typeConfirmEmailAddress(String confirmEmail){
+		 emailField.sendKeys(confirmEmail);
+	 }
 	public void clickOnContactInfoNextBtn(){
 		nextBtnCotactPage.click();
 	}

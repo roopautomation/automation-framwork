@@ -1,7 +1,9 @@
 package com.optum.synergy.reference.ui.pageobjects;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +14,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.optum.synergy.reference.lib.SyncLibrary;
 
 public class FAQ_UpdatesPageObject extends PageObjectBase {
 
@@ -39,7 +43,7 @@ public class FAQ_UpdatesPageObject extends PageObjectBase {
 	@FindBy(how = How.XPATH, using = ".//*[@id='faqs_0']/preceding-sibling::div/p")
 	private WebElement faqQuestion;
 
-	@FindBy(how = How.XPATH, using = ".//*[@id='faqs_0']/preceding-sibling::div")
+	@FindBy(how = How.XPATH, using = ".//*[@class='faq__topic__label']/following::div[1]/div[1]")
 	private WebElement openCloseArrow;
 
 	@FindBy(how = How.XPATH, using = ".//*[@id='faqs_0']")
@@ -64,7 +68,35 @@ public class FAQ_UpdatesPageObject extends PageObjectBase {
 
 	}
 	public void newPageOpenAndTitleVerifyAndClose(String title){
-		List<String> browserTabs = new ArrayList<String> (driver.getWindowHandles());
+		
+		
+		String parent=driver.getWindowHandle();
+		
+		Set<String> allwindows=driver.getWindowHandles();
+		
+		Iterator<String> itr=allwindows.iterator();
+		
+		
+		while(itr.hasNext())
+		{
+			
+			String child=itr.next();
+			if(!parent.equalsIgnoreCase(child))
+			{
+				driver.switchTo().window(child);
+				new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains("FAQ"));
+				Assert.assertTrue(driver.getTitle().contains(title));
+				System.out.println("Child window title is "+driver.getTitle());
+				System.out.println("New Page loaded Successfully");
+			}
+		}
+		
+		///driver.switchTo().window(parent);
+		
+		/*List<String> browserTabs = new ArrayList<String> (driver.getWindowHandles());
+		
+		SyncLibrary.numberOfWindows(30, 2);
+		System.out.println("number of windows for FAQ "+browserTabs.size());
 		driver.switchTo().window(browserTabs .get(1));
 		System.out.println("Pahe title now found is >>>"+driver.getTitle());
 		try 
@@ -77,7 +109,7 @@ public class FAQ_UpdatesPageObject extends PageObjectBase {
 		
 		{
 			System.out.println("======Page not Poaded===");
-		}
+		}*/
 		//driver.close();
 		//driver.switchTo().window(browserTabs.get(0));
 	}
@@ -103,16 +135,17 @@ public class FAQ_UpdatesPageObject extends PageObjectBase {
 		openCloseArrow.click();
 	}
     public void faqDiaplayed(){
-    	mediumWait.until(ExpectedConditions.visibilityOf(faqQuestion)).isDisplayed();
+    	mediumWait.until(ExpectedConditions.visibilityOf(openCloseArrow)).isDisplayed();
     }
 	public String openCloseButtonStatus() throws InterruptedException {
 
-		Thread.sleep(9000);
-		mediumWait.until(ExpectedConditions.visibilityOf(faqQuestion)).isDisplayed();
+	
+		
+		mediumWait.until(ExpectedConditions.visibilityOf(openCloseArrow)).isDisplayed();
 
 		// SyncLibrary.elementPresence(openCloseArrow, 30);
 
-		return openCloseArrow.getAttribute("aria-expanded");
+		return openCloseArrow1.getAttribute("aria-expanded");
 
 	}
 
