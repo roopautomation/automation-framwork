@@ -18,6 +18,8 @@ public class UpdatePhoneAndType
 	public void test1(){
 		 // use org.json JSONObject to define your json
 		   JSONObject jsonObj = new JSONObject()
+				                     .put("emailOptFlg","1")
+				                     .put("preferredEmail", "automation@test.env")
 		                             .put("preferredPhoneNumber","1212333333")
 		                             .put("preferredPhoneType","Home");
 
@@ -27,7 +29,7 @@ public class UpdatePhoneAndType
 			 .header("hsid", "1040285b-203f-4bfd-b7cb-7968e2456c8a")
 			 .log().all().contentType(ContentType.JSON)
 			 .body(jsonObj.toString())
-			 .post("https://tst-phs-services-np.ose-ctc-core.optum.com/phs/services/v1.0/secure/user/preferredPhone")
+			 .post("https://tst-phs-services-np.ose-ctc-core.optum.com/phs/services/v1.0/secure/user/preferredcontact")
 	         .then().extract().response();
 	 System.out.println("Response  is "+response.asString());
 	 
@@ -46,6 +48,8 @@ public class UpdatePhoneAndType
 	
 	 code.then().body("preferredPhoneType", equalTo("Home"));
 	 code.then().body("preferredPhoneNumber", equalTo("1212333333"));
+	 code.then().body("emailOptFlg", equalTo("1"));
+	 code.then().body("emailAddress", equalTo("automation@test.env"));
 		
 	}
 	

@@ -168,9 +168,9 @@ public void preCall_sectionheader_and_Description_field_displayed() throws Throw
 
 @When("^User enter text in all text fields and click on Finish button$")
 public void user_enter_text_in_all_text_fields_and_click_on_Finish_button() throws Throwable {
-	recomendForyou.enterTextInFirstTextBox();
-	recomendForyou.enterTextInSecondTextBox();
-	recomendForyou.enterTextInThirdTextBox();
+	recomendForyou.enterTextInFirstTextBox("Testing TEXT by Automation in box 1");
+	recomendForyou.enterTextInSecondTextBox("Testing TEXT by Automation in box 2");
+	recomendForyou.enterTextInThirdTextBox("Testing TEXT by Automation in box 3");
 	
 	recomendForyou.clickOnFinishButton();
 }

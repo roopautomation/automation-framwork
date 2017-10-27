@@ -31,13 +31,20 @@ public class ZeroFuction {
 	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	
 	driver.findElement(By.id("btn-section-1")).click();
-	//Thread.sleep(2000);
-	WebDriverWait wait =new WebDriverWait(driver, 20);
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='checkbox4']/following::div[1]"))).click();
+    Thread.sleep(2000);
+    driver.findElement(By.id("btn-section-2")).click();
+    Thread.sleep(2000);
+    driver.findElement(By.id("btn-section-3")).click();
+   // Thread.sleep(2000);
+    WebDriverWait wait =new WebDriverWait(driver, 20);
+	WebElement textbox=driver.findElement(By.xpath(".//*[@id='btn-section-4']/preceding::div[2]/parent::div"));
+	System.out.println(wait.until(ExpectedConditions.visibilityOf(textbox)));
 	//driver.findElement(By.xpath(".//*[@id='mainContent']/div/div[2]/div[2]/form/fieldset/label[4]/div")).click();
-	System.out.println(driver.findElement(By.xpath(".//*[@id='checkbox1']/following::div[1]")).isSelected());
-	driver.findElement(By.id("btn-section-2")).click();
-	Thread.sleep(2000);
+	System.out.println(textbox.isDisplayed());
+	System.out.println("TEXT box is  Displayed ");
+	//driver.findElement(By.id("checkboxemail")).click();
+	//System.out.println(driver.findElement(By.id("checkboxemail")).isSelected());
+	//Thread.sleep(2000);
 	//String indexN=driver.findElement(By.xpath(".//*[@id='testimonial-carousel']/ol/li[1]")).findElement(By.xpath("./a")).getAttribute("data-slide-to");
 	//System.out.println("Second circle>>>"+indexN);
 	//System.out.println("int value>>"+Integer.parseInt(indexN));

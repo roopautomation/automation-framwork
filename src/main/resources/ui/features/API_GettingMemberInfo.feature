@@ -1,3 +1,4 @@
+@TestAPI
 Feature: Validate Get service response and member info Using member ID
 
   Scenario: Validating Get service response member firstName, Phone number and type

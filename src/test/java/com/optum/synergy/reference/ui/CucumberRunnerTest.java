@@ -18,7 +18,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 	    plugin = { "pretty", "html:target/cucumber","json:target/cucumber.json","com.cucumber.listener.ExtentCucumberFormatter"}, 
 		features = { "src/main/resources/ui/features" },
-		tags = { "@sprint3" },
+		tags = { "@testdemo" },
 		snippets = SnippetType.CAMELCASE
 )
 public class CucumberRunnerTest {

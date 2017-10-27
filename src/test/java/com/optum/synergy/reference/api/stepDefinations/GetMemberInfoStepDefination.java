@@ -19,7 +19,7 @@ public class GetMemberInfoStepDefination {
 
 	@Given("^Member exists with HSID as \"([^\"]*)\"$")
 	public void member_exists_with_HSID_as(String hsid)   {
-		request = (RequestSpecification) given().relaxedHTTPSValidation().header("hsid", hsid).log().all()
+		request =  given().relaxedHTTPSValidation().header("hsid", hsid).log().all()
 				.contentType(ContentType.JSON);
 		System.out.println("HSID Data which is coming from Example table is " + hsid);
 	}

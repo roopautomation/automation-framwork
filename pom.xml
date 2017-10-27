@@ -200,7 +200,9 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
 						<configuration>
-							
+							<testFailureIgnore>true</testFailureIgnore>
+							<reportsDirectory>${basedir}/target</reportsDirectory>
+							<outputDirectory>${basedir}/target</outputDirectory>
 							<includes>
 								<include>**/CucumberRunnerTest.java</include>
 							</includes>

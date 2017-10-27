@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -53,7 +54,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.CSS, using = ".pre-call__call-back-details.ng-binding")
 	private WebElement callBackDetail;
 	
-	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-2']//parent::form")
+	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-3']/parent::form")
 	private WebElement timeFramCheckBox;
 	
 	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox1']/following::div[1]")
@@ -68,16 +69,16 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox4']/following::div[1]")
 	private WebElement eveningTimeCheckBox;
 	
-	@FindBy(how = How.ID, using = "btn-section-2")
+	@FindBy(how = How.ID, using = "btn-section-3")
 	private WebElement nextBtnPrefTime;
 	
 	@FindBy(how = How.CSS, using = ".pre-call__contact-info.text-left.fade")
 	private WebElement cotactInfoSection;
 	
-	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Email address')]/parent::div/following::div[1]")
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/following::div[2]//span")
 	private WebElement email;
 	
-	@FindBy(how = How.XPATH, using=".//*[@id='checkboxemail']/following::div[1]")
+	@FindBy(how = How.ID, using="checkboxemail")
 	private WebElement sendEmailBtn;
 	
 	@FindBy(how = How.ID, using = "errmsg-phone-invalid")
@@ -89,7 +90,10 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.ID, using = "errmsg-email-invalid")
 	private WebElement emailErrorMsg;
 	
-	@FindBy(how = How.XPATH, using=".//*[@id='checkboxemail']/following::div[1]/following::a[1]")
+	@FindBy(how = How.ID, using = "errmsg-email-match")
+	private WebElement emailNotMatchErrorMsg;
+	
+	@FindBy(how = How.XPATH, using=".//*[@id='checkboxemail']/following::input[2]")
 	private WebElement confirmEmailField;
 	
 	@FindBy(how = How.ID, using = "errmsg-confemail-invalid")
@@ -101,16 +105,22 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.XPATH, using=".//*[@id='btn-section-2']/preceding::input[1]")
 	private WebElement cofirmEmailField;
 	
+	@FindBy(how = How.XPATH, using=".//*[@id='checkboxemail']/following::input[1]/following::span[1]")
+	private WebElement emailGreenCheck;
+	
+	@FindBy(how = How.XPATH, using=".//*[@id='btn-section-2']/preceding::input[1]/following::span[1]")
+	private WebElement confirmEmailGreenCheck;
+	
 	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/preceding::a[1]")
 	private WebElement phoneEditLink;
 	
 	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/following::div[1]/preceding::input[2]")
 	private WebElement phoneField;
 	
-	@FindBy(how = How.XPATH, using = "//*[contains(text(),'Phone')]/following::select")
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/following::div[1]/preceding::select")
 	private WebElement phonTypeDD;
 
-	@FindBy(how = How.ID, using = "btn-section-3")
+	@FindBy(how = How.ID, using = "btn-section-2")
 	private WebElement nextBtnCotactPage;
 	
 	@FindBy(how = How.ID, using = "btn-section-4")
@@ -131,8 +141,6 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.XPATH, using = ".//*[@id='btn-section-4']/preceding::textarea[1]")
 	private WebElement questionAnsBox3;
 	
-	@FindBy(how = How.XPATH, using = "")
-	private WebElement phonErrorMsg;
 	
 	@FindBy(how=How.CSS,using=".pre-call__confirmation")
 	private WebElement confirmationPage;
@@ -162,8 +170,8 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 		ctcFnctnFld.isDisplayed();
 	}
 	
-	public void preferedTimePageDisplayed(){
-		timeFramCheckBox.isDisplayed();
+	public boolean preferedTimePageDisplayed(){
+		return timeFramCheckBox.isDisplayed();
 	}
 	public void recommendedPageTitleVerify(String title){
 		helper.varifyPageTitle(title);
@@ -199,6 +207,30 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     public void clickOnEveningTimeCheckbox(){
     	smallWait.until(ExpectedConditions.visibilityOf(eveningTimeCheckBox)).click();
 	}
+    public void clickPreferredTimeCheckBoxAs(String time){
+    	//String Time=time;
+    	if("Morning".equalsIgnoreCase(time)){
+    		morningTimeCheckBox.click();
+    	}
+    	 if("Afternoon".equalsIgnoreCase(time)){
+    		afternoonTimeCheckBox.click();
+    	}
+    	 if("Evening".equalsIgnoreCase(time)){
+    		eveningTimeCheckBox.click();
+    	} 
+    	 else if("Anytime".equalsIgnoreCase(time)){
+    		anyTimeCheckBox.click();
+    	
+    	 }
+    		else {
+    			System.out.println("No Preferred time is selected");
+    	} 
+    	 
+    }
+    public boolean sendEmailCheckBoxIsDafaultSelected(){
+    	 return smallWait.until(ExpectedConditions.elementToBeSelected(sendEmailBtn));
+    			
+    } 
     public void eveningTimeCheckboxIsNotChecked(){
     	eveningTimeCheckBox.isSelected();
     }
@@ -209,6 +241,12 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	String selectedOption = new Select(phonTypeDD).getFirstSelectedOption().getText();
     	return selectedOption;
     }
+    public void selectPhoneTypeAS(String phoneType){
+    	Select select = new Select(phonTypeDD);
+    	//select.deselectAll();
+    	select.selectByVisibleText(phoneType);
+    	
+    }
     
     public void secondTrackerCircleCompleted(){
     	List<WebElement> noOfCircle= trackerBar.findElements(By.xpath(".//li[contains(@class,'--complete')]"));
@@ -218,8 +256,8 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	return cotactInfoSection.isDisplayed();
     }
 	
-	public void emailDisplayed(){
-		email.isDisplayed();
+	public boolean emailDisplayed(){
+		return email.isDisplayed();
 	}
 	
     public void clickOnNextButtonOfPreferTimePage(){
@@ -232,18 +270,43 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 		Assert.assertEquals(3,noOfCircle.size());
 	}
 			
-    public void emailErrorMsgDisplayed(){
-    	emailErrorMsg.isSelected();
+    public boolean emailErrorMsgDisplayed(){
+    	return emailErrorMsg.isDisplayed();
+	}
+    public String errorTextOFEmail(){
+    	return emailErrorMsg.getText();
+    }
+    public boolean confirmEmailErrorMsgDisplayed(){
+    	return confirmEmailErrorMsg.isDisplayed();
+	}
+    public boolean emailNotMatchingErrorMsgDisplayed(){
+    	return emailNotMatchErrorMsg.isDisplayed();
 	}
     
-    public void phoneErrorMsgDisplayed(){
-    	phonErrorMsg.isDisplayed();
+    public boolean phoneErrorMsgDisplayed(){
+    	smallWait.until(ExpectedConditions.visibilityOf(phoneErrorMsg));
+    	return phoneErrorMsg.isDisplayed();
 	}
     public void clickOnEditPhoneLink(){
     	smallWait.until(ExpectedConditions.visibilityOf(phoneEditLink)).click();
     }
-    public void typePhoneNumber(String phone){
-    	phoneField.sendKeys(phone);
+    public void typePhoneNumber(String phNumber) throws InterruptedException{
+    	mediumWait.until(ExpectedConditions.visibilityOf(phoneField));
+    	/*phoneField.clear();
+    	Thread.sleep(2000);
+    	Actions act = new Actions(driver);
+    	for(int i=0;i<phoneField.getText().length();i++)
+	    	{
+	    	act.sendKeys(Keys.BACK_SPACE);
+	    	}
+	    	act.build().perform();
+    	act.release();*/
+    	phoneField.sendKeys(phNumber);
+    	
+    	
+    }
+    public void clearPhoneField(){
+    	phoneField.clear();
     }
     
 	public boolean phoneFieldDisplayed(){
@@ -256,10 +319,25 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	    	smallWait.until(ExpectedConditions.visibilityOf(editEmailLink)).click();
     }
 	 public void typeEmailAddress(String email){
-		 emailField.sendKeys(email);
+		 smallWait.until(ExpectedConditions.visibilityOf(emailField)).clear();
+		 emailField.sendKeys(email); 
 	 }
 	 public void typeConfirmEmailAddress(String confirmEmail){
-		 emailField.sendKeys(confirmEmail);
+		 confirmEmailField.clear();
+		 confirmEmailField.sendKeys(confirmEmail);
+	 }
+	 public boolean emailAddressFieldDisplayed(){
+		return emailField.isDisplayed();
+	 }
+	 public boolean confirmEmailAddressFieldDisplayed(){
+		// smallWait.until(ExpectedConditions.visibilityOf(confirmEmailField));
+		 return confirmEmailField.isDisplayed();
+	 }
+	 public boolean emailGreenCheckMarkDisplayed(){
+		return emailGreenCheck.isDisplayed();
+	 }
+	 public void confirmEmailGreenCheckMarkDisplayed(){
+		 confirmEmailGreenCheck.isDisplayed();
 	 }
 	public void clickOnContactInfoNextBtn(){
 		nextBtnCotactPage.click();
@@ -268,19 +346,20 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 		prCallSectionHeader.isDisplayed();
 	}
     public boolean questionSectionDisplayed(){
+    	mediumWait.until(ExpectedConditions.visibilityOf(questionSection));
 	return questionSection.isDisplayed();
     }
-    public void enterTextInFirstTextBox(){
-    	questionAnsBox3.clear();
-	    questionAnsBox3.sendKeys(">>>>>>>>>>>I Am healthy>>>>>>>>>>");
-    }
-    public void enterTextInSecondTextBox(){
-    	questionAnsBox2.clear();
-    	questionAnsBox2.sendKeys(">>>>.My Treatment is going good>>>>>>>>");
-    }
-    public void enterTextInThirdTextBox(){
+    public void enterTextInFirstTextBox(String answerText){
     	questionAnsBox1.clear();
-    	questionAnsBox1.sendKeys(">>>>>>>>>No Thanks>>>>>>>>>>");
+	    questionAnsBox1.sendKeys(answerText);
+    }
+    public void enterTextInSecondTextBox(String answerText){
+    	questionAnsBox2.clear();
+    	questionAnsBox2.sendKeys(answerText);
+    }
+    public void enterTextInThirdTextBox(String answerText){
+    	questionAnsBox3.clear();
+    	questionAnsBox3.sendKeys(answerText);
     }
     public void clickOnFinishButton() throws Throwable{
     	finishBtnQuestionPage.click();
