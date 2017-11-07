@@ -1,18 +1,6 @@
 #Author: Sukhwinder Singh
 @URLs
-Feature: STG URL Redirects - Cancer, Fertility, Kidney, Maternity, and Transplant
-
-  Scenario Outline: Cancer Resource Service URLs redirect
-    Given User open browser
-    When User enter stage URL as "<Stage URL>"
-    Then User verify title as "<Page title>"
-    And Redirect URL is as "<RedirectURL>"
-
-    Examples: 
-      | Stage URL                                   | RedirectURL                                                         | Page title       |
-      | https://stg.phs.com/cancersolutions         | https://stg.phs.com/content/phs/en/phs/cancersolutions.html         | Cancer Solutions |
-      | https://stg-myuhc.phs.com/cancersolutions   | https://stg-myuhc.phs.com/content/phs/en/phs/cancersolutions.html   | Cancer Solutions |
-      | https://stg-myoptum.phs.com/cancersolutions | https://stg-myoptum.phs.com/content/phs/en/phs/cancersolutions.html | Cancer Solutions |
+Feature: STG URL Redirects - Fertility, Kidney, Maternity, and Transplant
 
   Scenario Outline: Fertility Solutions URLs redirect
     Given User open browser

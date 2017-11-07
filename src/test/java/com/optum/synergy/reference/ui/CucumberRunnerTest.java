@@ -43,7 +43,7 @@ public class CucumberRunnerTest {
 
         System.setProperty("BrowserVersion", "52");
 		System.setProperty("BrowserType", "Firefox");
-		System.setProperty("BrowserEnv", "local");   // local browser or sauceLabs browser
+		System.setProperty("BrowserEnv", "saucelab");   // local browser or sauceLabs browser
       
     } 
     

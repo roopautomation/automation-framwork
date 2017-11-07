@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@testdemo
+
 Feature: Programm referal pre call form integration
 
   Scenario Outline: Store Members Edited Phone Number and phone type
