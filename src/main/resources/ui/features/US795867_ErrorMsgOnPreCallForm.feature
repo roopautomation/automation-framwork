@@ -2,7 +2,6 @@
 @testdemo
 Feature: Error message on pre call form
 
-
   Scenario: Error message with invalid phone number
     Given User is on recommended page
     When User click on Request call button
@@ -35,7 +34,7 @@ Feature: Error message on pre call form
     Then Email not matching error message displayed
 
   Scenario: Green check mark displayed with both valid email
-     Given User is on recommended page
+    Given User is on recommended page
     When User click on Request call button
     And Contact info section displayed
     And User click edit phone link

@@ -34,15 +34,44 @@ public class ZeroFuction {
     Thread.sleep(2000);
     driver.findElement(By.id("btn-section-2")).click();
     Thread.sleep(2000);
-    driver.findElement(By.id("btn-section-3")).click();
-   // Thread.sleep(2000);
-    WebDriverWait wait =new WebDriverWait(driver, 20);
-	WebElement textbox=driver.findElement(By.xpath(".//*[@id='btn-section-4']/preceding::div[2]/parent::div"));
-	System.out.println(wait.until(ExpectedConditions.visibilityOf(textbox)));
-	//driver.findElement(By.xpath(".//*[@id='mainContent']/div/div[2]/div[2]/form/fieldset/label[4]/div")).click();
-	System.out.println(textbox.isDisplayed());
-	System.out.println("TEXT box is  Displayed ");
-	//driver.findElement(By.id("checkboxemail")).click();
+    
+   // public String checkedBoxText(){
+    //	String text=null;
+    
+//    	boolean status=driver.findElement(By.xpath(".//*[@id='checkbox4']")).isSelected();
+//    		String	text=driver.findElement(By.xpath(".//*[@id='checkbox4']/following::div[1]/parent::label")).getText();
+//    		System.out.println("CheckBox text is >>"+status+"text is >>.."+text);
+//    	
+    WebElement check=driver.findElement(By.xpath(".//*[@id='checkbox4']"));
+		//String text1=null;
+		List<WebElement> elementsA=driver.findElements(By.xpath(".//*[@id='mainContent']/div/div[2]/div[1]/div[3]/form/fieldset/div/label"));
+		String selectedText =null ;
+		for(WebElement eleA:elementsA){
+			if(eleA.isSelected()) {
+				selectedText=eleA.findElement(By.xpath("./parent::label")).getText();
+				
+				System.out.println("saved time text >>>>>"+selectedText);
+				break;
+			}
+		}System.out.println("secont text"+selectedText);
+//    if (driver.findElement(By.xpath(".//*[@id='checkbox1']")).isSelected()){
+//    	text1=driver.findElement(By.xpath(".//*[@id='checkbox1']/following::div[1]/parent::label")).getText();
+//		System.out.println("CheckBox text is >>.."+text1);
+//    }
+//    if (check.isSelected()){
+//    	text1=check.findElement(By.xpath("./parent::label")).getText();
+//		System.out.println("CheckBox text is box 4  >>.."+text1);
+//    }
+   // System.out.println("Return text"+text1);
+//    driver.findElement(By.id("btn-section-3")).click();
+//   // Thread.sleep(2000);
+//    WebDriverWait wait =new WebDriverWait(driver, 20);
+//	WebElement textbox=driver.findElement(By.xpath(".//*[@id='btn-section-4']/preceding::div[2]/parent::div"));
+//	System.out.println(wait.until(ExpectedConditions.visibilityOf(textbox)));
+//	//driver.findElement(By.xpath(".//*[@id='mainContent']/div/div[2]/div[2]/form/fieldset/label[4]/div")).click();
+//	System.out.println(textbox.isDisplayed());
+//	System.out.println("TEXT box is  Displayed ");
+//	//driver.findElement(By.id("checkboxemail")).click();
 	//System.out.println(driver.findElement(By.id("checkboxemail")).isSelected());
 	//Thread.sleep(2000);
 	//String indexN=driver.findElement(By.xpath(".//*[@id='testimonial-carousel']/ol/li[1]")).findElement(By.xpath("./a")).getAttribute("data-slide-to");

@@ -44,6 +44,7 @@ public class AuthorRecommendedForYouStepDefination {
 	@Then("^Preferred Time section displayed$")
 	public void preferred_Time_section_displayed() throws Throwable {
 		recomendForyou.preferedTimePageDisplayed();
+		System.out.println("Preferred page displayed >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
 
 	@Then("^First circle of tracker is completed$")
@@ -142,6 +143,7 @@ public class AuthorRecommendedForYouStepDefination {
 
 	@When("^User click on Next button$")
 	public void user_click_on_Next_button() throws Throwable {
+		Thread.sleep(1000);
 		recomendForyou.clickOnContactInfoNextBtn();
 		Thread.sleep(2000);
 	}

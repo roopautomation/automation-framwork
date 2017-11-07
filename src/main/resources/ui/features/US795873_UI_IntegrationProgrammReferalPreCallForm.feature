@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-#@integration
+@testdemo
 Feature: Programm referal pre call form integration
 
   Scenario Outline: Store Members Edited Phone Number and phone type
@@ -7,13 +7,12 @@ Feature: Programm referal pre call form integration
     When The user has clicked the CTA to Request A Call
     Then User is on Contact info section
     When User click edit phone link
-    And The user selects the phone number types as "<PhoneType>"
-    And User enter phone number as "1234567890"
-    #And Member enter new phone number like "<PhoneNumber>"
+    And The user selects the phone number types as <PhoneType>
+    And User enter phone number as <Number>
 
     Examples: 
-      | PhoneType | PhoneNumber |
-      | Home      |  1000000000 |
+      | PhoneType | Number     |
+      | Home      | 1234511111 |
 
   Scenario: User edit email and save
     Given Send email option is default checked
@@ -26,7 +25,7 @@ Feature: Programm referal pre call form integration
 
   Scenario: Store Members Preferred Call Back Times
     Given User complete contact info and is on preferred time page
-    And The user selects their preferred call back time as "Morning"
+    And The user selects their preferred call back time as "Mornings"
     And The user clicks the Next button
     Then Question section tab display
     Then The API should be triggered to save call back data
@@ -39,3 +38,13 @@ Feature: Programm referal pre call form integration
     And The member clicks the Finish button
     Then Confirmation page display
     Then The API should be triggered to save questionnaire data
+
+  Scenario: Verify data in detail page
+    Given Confirmation page display
+    When user click on show More link
+    Then Detail page displayed
+    And User verify Phone Type
+    And User verify Phone Number
+    And edit link for phone and phoneType displayed
+    And User verify Preferred time selected
+    And User verify Answer text

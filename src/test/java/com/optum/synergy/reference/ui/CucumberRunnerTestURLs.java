@@ -18,10 +18,10 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 	    plugin = { "pretty", "html:target/cucumber","json:target/cucumber.json","com.cucumber.listener.ExtentCucumberFormatter"}, 
 		features = { "src/main/resources/ui/features" },
-		tags = { "@testdemo" },
+		tags = { "@URLs" },
 		snippets = SnippetType.CAMELCASE
 )
-public class CucumberRunnerTest {
+public class CucumberRunnerTestURLs {
     @AfterClass
     public static void tearDown()
     {
@@ -43,7 +43,7 @@ public class CucumberRunnerTest {
 
         System.setProperty("BrowserVersion", "52");
 		System.setProperty("BrowserType", "Firefox");
-		System.setProperty("BrowserEnv", "local");   // local browser or sauceLabs browser
+		System.setProperty("BrowserEnv", "saucelab");   // local browser or sauceLabs browser
       
     } 
     

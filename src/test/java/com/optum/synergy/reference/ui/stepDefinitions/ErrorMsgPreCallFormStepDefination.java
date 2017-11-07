@@ -1,15 +1,21 @@
 package com.optum.synergy.reference.ui.stepDefinitions;
 
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import com.optum.synergy.reference.ui.pageobjects.AuthorRecommendedForYouPageObject;
 import com.optum.synergy.reference.ui.pageobjects.CommonHelper;
 import com.optum.synergy.reference.ui.pageobjects.LandingFooterPageObject;
+import com.optum.synergy.reference.ui.pageobjects.PageObjectBase;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class ErrorMsgPreCallFormStepDefination {
+public class ErrorMsgPreCallFormStepDefination  {
+	
+	public static String expectedPhoneNumber;
 	
 	CommonHelper helper = new CommonHelper();
 	LandingFooterPageObject page = new LandingFooterPageObject(helper);
@@ -20,10 +26,13 @@ public class ErrorMsgPreCallFormStepDefination {
 		recomendForyou.clickOnEditPhoneLink();
 		
 	}
-	@When("^User enter phone number as \"([^\"]*)\"$")
+	@When("^User enter phone number as (.+)$")
 	public void user_enter_phone_number_as(String phone) throws Throwable {
 		/*recomendForyou.clearPhoneField();
 		Thread.sleep(2000);*/
+		expectedPhoneNumber=phone;
+		
+		
 		recomendForyou.typePhoneNumber(phone);
 		Thread.sleep(2000);
 	}
@@ -35,7 +44,7 @@ public class ErrorMsgPreCallFormStepDefination {
 	@Then("^Email error message displayed$")
 	public void email_error_message_displayed() throws Throwable {
 		Assert.assertTrue("Email error message not displayed",recomendForyou.emailErrorMsgDisplayed());
-		System.out.println(recomendForyou.errorTextOFEmail());
+		System.out.println("ERROR MESSAGE DISPLAYES WHEN INVALID EMAIL ENTERED AS >>"+recomendForyou.errorTextOFEmail());
 	}
 
 	@When("^User click on edit Email$")

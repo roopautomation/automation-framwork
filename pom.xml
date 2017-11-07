@@ -21,7 +21,7 @@
 		<java.version>1.7</java.version>
 		<start-class>com.optum.synergy.reference.mobile.CucumberRunnerTest</start-class>
 	</properties>
-<!-- Test  -->
+	<!-- Test -->
 	<dependencies>
 		<dependency>
 			<groupId>com.optum.synergy</groupId>
@@ -49,21 +49,26 @@
 			<version>3.4</version>
 		</dependency>
 		<dependency>
-    <groupId>com.vimalselvam</groupId>
-    <artifactId>cucumber-extentsreport</artifactId>
-    <version>1.1.1</version>
-</dependency>
+			<groupId>com.vimalselvam</groupId>
+			<artifactId>cucumber-extentsreport</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-		 <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-core</artifactId>
-      <version>1.3</version>
-      <scope>compile</scope>
-    </dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
@@ -84,16 +89,13 @@
 			<artifactId>selenium-api</artifactId>
 			<version>2.53.1</version>
 		</dependency>
-		<!-->dependency>
+		<!-->dependency> <groupId>org.seleniumhq.selenium</groupId> <artifactId>selenium-java</artifactId> 
+			<version>2.53.1</version> </dependency> -->
+		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>2.53.1</version>
-		</dependency>-->
-		<dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>3.4.0</version>
-    </dependency> 
+			<version>3.4.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
@@ -130,9 +132,9 @@
 			<version>20160810</version>
 		</dependency>
 		<dependency>
-		   <groupId>com.googlecode.json-simple</groupId>
-		   <artifactId>json-simple</artifactId>
-		   <version>1.1.1</version>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>dom4j</groupId>
@@ -157,28 +159,29 @@
 			<version>1.4.01</version>
 		</dependency>
 		<dependency>
-  <groupId>com.jayway.restassured</groupId>
-  <artifactId>rest-assured</artifactId>
-  <version>2.9.0</version>
-</dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>2.9.0</version>
+		</dependency>
 
 
 
-  </dependencies><url>http://maven.apache.org</url>
-  
-  <repositories>
-    <repository>
-        <id>central</id>
-        <url>http://repo.maven.apache.org/maven2/</url>
-    </repository>
-    </repositories>
-		
-		<!-- dependency> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
-			<version>3.5.1</version> <type>maven-plugin</type> </dependency -->
+	</dependencies>
+	<url>http://maven.apache.org</url>
 
-		<!--dependency> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
-			<version>3.1</version> </dependency -->
-	
+	<repositories>
+		<repository>
+			<id>central</id>
+			<url>http://repo.maven.apache.org/maven2/</url>
+		</repository>
+	</repositories>
+
+	<!-- dependency> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
+		<version>3.5.1</version> <type>maven-plugin</type> </dependency -->
+
+	<!--dependency> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
+		<version>3.1</version> </dependency -->
+
 
 	<profiles>
 		<profile>
@@ -195,7 +198,7 @@
 							<compilerArgument></compilerArgument>
 						</configuration>
 					</plugin>
-					
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
@@ -206,7 +209,55 @@
 							<includes>
 								<include>**/CucumberRunnerTest.java</include>
 							</includes>
-							
+                            <excludes>
+								<exclude>**/CucumberRunnerTestURLs.java</exclude>
+								<exclude>**/CucumberRunnerTestAPI.java</exclude>
+							</excludes>
+
+						</configuration>
+					</plugin>
+
+				</plugins>
+
+				<resources>
+					<resource>
+						<directory>src/test/java</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+
+<profile>
+			<id>url</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.1</version>
+						<configuration>
+							<source>${java.version}</source>
+							<target>${java.version}</target>
+							<compilerArgument></compilerArgument>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<testFailureIgnore>true</testFailureIgnore>
+							<reportsDirectory>${basedir}/target</reportsDirectory>
+							<outputDirectory>${basedir}/target</outputDirectory>
+							<includes>
+								<include>**/CucumberRunnerTestURLs.java</include>
+							</includes>
+                         <excludes>
+								<exclude>**/CucumberRunnerTest.java</exclude>
+								<exclude>**/CucumberRunnerTestAPI.java</exclude>
+							</excludes>
+
 						</configuration>
 					</plugin>
 
@@ -222,6 +273,7 @@
 		</profile>
 
 
-			</profiles>
 
-	</project>
+	</profiles>
+
+</project>

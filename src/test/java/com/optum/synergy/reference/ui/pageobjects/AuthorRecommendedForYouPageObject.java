@@ -69,6 +69,21 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox4']/following::div[1]")
 	private WebElement eveningTimeCheckBox;
 	
+	// check box using for iteration selecting by IDs
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox1']")
+	private WebElement anyTime;
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox2']")
+	private WebElement morningTime;
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox3']")
+	private WebElement afternoonTime;
+	
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkbox4']")
+	private WebElement eveningTime;
+	
+	
 	@FindBy(how = How.ID, using = "btn-section-3")
 	private WebElement nextBtnPrefTime;
 	
@@ -145,6 +160,28 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how=How.CSS,using=".pre-call__confirmation")
 	private WebElement confirmationPage;
 	
+	@FindBy(how=How.LINK_TEXT,using="Show more")
+	private WebElement showMore;
+	
+	@FindBy(how=How.XPATH,using=".//div[@class='form-group']/span[1]")
+	private WebElement savedPhoneType;
+	
+	@FindBy(how=How.XPATH,using=".//div[@class='form-group']/span[2]")
+	private WebElement savedPhoneNumber;
+	
+	@FindBy(how=How.CSS,using=".form-group.ng-binding")
+	private WebElement savedEmail;
+	
+	@FindBy(how=How.XPATH,using=".//div[@class='form-group']/a")
+	private WebElement phoneNumTypeLink;
+	
+	@FindBy(how=How.XPATH,using=".//a[@class='btn btn-primary']/parent::div/preceding::div[5]/textarea[1]")
+	private WebElement savedAnsText1;
+	
+	@FindBy(how=How.CSS,using=".detail-container")
+	private WebElement detailPage;
+
+
 	
 	public void launchRecommendedPage(){
 		driver.get("https://test-populationhealth.optum.com/content/phs/en/secure/recommended-for-you.html");
@@ -209,16 +246,16 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	}
     public void clickPreferredTimeCheckBoxAs(String time){
     	//String Time=time;
-    	if("Morning".equalsIgnoreCase(time)){
+    	if("Mornings".equalsIgnoreCase(time)){
     		morningTimeCheckBox.click();
     	}
-    	 if("Afternoon".equalsIgnoreCase(time)){
+    	 if("Afternoons".equalsIgnoreCase(time)){
     		afternoonTimeCheckBox.click();
     	}
-    	 if("Evening".equalsIgnoreCase(time)){
+    	 if("Evenings".equalsIgnoreCase(time)){
     		eveningTimeCheckBox.click();
     	} 
-    	 else if("Anytime".equalsIgnoreCase(time)){
+    	 else if("Anytimes".equalsIgnoreCase(time)){
     		anyTimeCheckBox.click();
     	
     	 }
@@ -227,6 +264,32 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	} 
     	 
     }
+    public String checkedBoxText(){
+    	String text=null;
+    	if(driver.findElement(By.xpath(".//*[@id='checkbox4']")).isSelected()){
+    		text=driver.findElement(By.xpath(".//*[@id='checkbox4']/following::div[1]/parent::label")).getText();
+    	}
+		return text;
+    	
+    }
+    
+	public String preferredSelectedTime() throws InterruptedException{
+		Thread.sleep(2000);
+		String text=driver.findElement(By.xpath("(//form[contains(@class,'pre-call__form')])[2]//fieldset//div//input[@aria-checked='true']//..")).getText();
+		System.out.println("Text from portal is "+text);
+//		List<WebElement> elementsA=driver.findElements(By.xpath(".//*[@id='mainContent']/div/div[2]/div[1]/div[3]/form/fieldset/div/label/input"));
+//		String selectedText =null ;
+//		for(WebElement eleA:elementsA){
+//			if(eleA.isSelected()) {
+//				selectedText=eleA.findElement(By.xpath("./parent::label")).getText();
+//				
+//				System.out.println("saved time text >>>>>"+selectedText);
+//				break;
+//			}
+//		}System.out.println("secont text"+selectedText);
+		return text;
+		
+	}
     public boolean sendEmailCheckBoxIsDafaultSelected(){
     	 return smallWait.until(ExpectedConditions.elementToBeSelected(sendEmailBtn));
     			
@@ -245,6 +308,15 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	Select select = new Select(phonTypeDD);
     	//select.deselectAll();
     	select.selectByVisibleText(phoneType);
+    	
+    	try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	new Actions(driver).sendKeys(Keys.TAB).build().perform();
     	
     }
     
@@ -291,9 +363,13 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     	smallWait.until(ExpectedConditions.visibilityOf(phoneEditLink)).click();
     }
     public void typePhoneNumber(String phNumber) throws InterruptedException{
-    	mediumWait.until(ExpectedConditions.visibilityOf(phoneField));
-    	/*phoneField.clear();
-    	Thread.sleep(2000);
+    	//mediumWait.until(ExpectedConditions.visibilityOf(phoneField));
+    	Thread.sleep(1000);
+    	phoneField.clear();
+    	Thread.sleep(1000);
+    	phoneField.click();
+    	
+    	/*Thread.sleep(2000);
     	Actions act = new Actions(driver);
     	for(int i=0;i<phoneField.getText().length();i++)
 	    	{
@@ -301,6 +377,28 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	    	}
 	    	act.build().perform();
     	act.release();*/
+    
+    	
+   // 	System.out.println("Action started");
+//    	
+//    	Thread.sleep(3000);
+//   	
+//    	Actions act=new Actions(driver);
+//    	
+//    	
+//    	
+//    	Thread.sleep(2000);
+//		
+//		act.sendKeys(Keys.chord(Keys.CONTROL),"a").build().perform();
+//		
+//		Thread.sleep(2000);
+//	
+//		act.sendKeys(Keys.DELETE).build().perform();
+		
+//		System.out.println("Action closed");
+		
+//		Thread.sleep(2000);
+		
     	phoneField.sendKeys(phNumber);
     	
     	
@@ -340,6 +438,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 		 confirmEmailGreenCheck.isDisplayed();
 	 }
 	public void clickOnContactInfoNextBtn(){
+		
 		nextBtnCotactPage.click();
 	}
 	public void preCallSectionHeaderDisplayed(){
@@ -368,6 +467,30 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
     public boolean confirmationPageDisplayed(){
     	return confirmationPage.isDisplayed();
     }
+    public void clickOnShowMoreLink(){
+    	showMore.click();
+    }
+    public boolean detailPageDisplayed(){
+    	return detailPage.isDisplayed();
+    }
+    public String savedPhoneType(){
+		return savedPhoneType.getText();	
+    }
+    public String savedPhoneNumber(){
+		return savedPhoneNumber.getText();	
+    }
+    public String savedEmail(){
+		return savedEmail.getText();	
+    }
+    public boolean phoneEditLinkDisplayed(){
+    	return phoneNumTypeLink.isDisplayed();
+    }
+	public String savedAnswerOneText(){
 	
+		return savedAnsText1.getText();
+	}
 	
+    
+    
+    
 }

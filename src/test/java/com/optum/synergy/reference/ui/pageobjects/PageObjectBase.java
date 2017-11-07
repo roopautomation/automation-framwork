@@ -59,6 +59,8 @@ public String uuid="";
 				driver = DriverFactory.createAndGetDeviceDriver();
 				System.out.println("Running Page Object Class");
 				//System.out.println("Driver value is "+driver);
+					
+				driver.manage().deleteAllCookies();
 				driver.manage().window().maximize();
 				//WebController.maximizeWindow();
 			

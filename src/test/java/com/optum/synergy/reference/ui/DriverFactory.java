@@ -6,7 +6,10 @@ import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -116,6 +119,7 @@ public class DriverFactory {
 				}
 				capabilities.setCapability("marionette", isMarionette);
 				System.setProperty("webdriver.gecko.driver", "GeckoDriver" + File.separator + "0.17.0" + File.separator + "geckodriver.exe");
+				
 				setDriver(new FirefoxDriver(capabilities));
 			} else {
 				throw new IllegalArgumentException("Unsupported Local Browser " + BrowserType);
