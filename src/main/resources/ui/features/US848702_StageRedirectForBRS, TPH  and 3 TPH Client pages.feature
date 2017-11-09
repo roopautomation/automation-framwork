@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-
+@URLs1
 Feature: Redirect STG URLs for BRS, TPH  and 3 TPH Client pages
 
   Scenario Outline: Bariatric Resource Services (BRS) URLs redirect
@@ -10,9 +10,9 @@ Feature: Redirect STG URLs for BRS, TPH  and 3 TPH Client pages
 
     Examples: 
       | Stage URL                       | RedirectURL                                             | Page title |
-      | https://stg.phs.com/brs         | https://stg.phs.com/content/phs/en/phs/brs.html         |            |
-      | https://stg-myuhc.phs.com/brs   | https://stg-myuhc.phs.com/content/phs/en/phs/brs.html   |            |
-      | https://stg-myoptum.phs.com/brs | https://stg-myoptum.phs.com/content/phs/en/phs/brs.html |            |
+      | https://stg.phs.com/brs         | https://stg.phs.com/content/phs/en/phs/brs.html         |  bariatric Resource services          |
+      | https://stg-myuhc.phs.com/brs   | https://stg-myuhc.phs.com/content/phs/en/phs/brs.html   |  bariatric Resource services          |
+      | https://stg-myoptum.phs.com/brs | https://stg-myoptum.phs.com/content/phs/en/phs/brs.html |  bariatric Resource services          |
 
   Scenario Outline: Total Population Health Value URLs redirect
     Given User open browser
@@ -55,8 +55,9 @@ Feature: Redirect STG URLs for BRS, TPH  and 3 TPH Client pages
 
     Examples: 
       | Stage URL                         | RedirectURL                                               | Page title |
-      | https://stg.phs.com/persons       | https://stg.phs.com/content/phs/en/tph/persons.html       |            |
-      | https://stg-myuhc.phs.com/persons | https://stg-myuhc.phs.com/content/phs/en/tph/persons.html |            |
+      | https://stg.phs.com/parsons       | https://stg.phs.com/content/phs/en/tph/parsons.html       |            |
+      | https://stg-myuhc.phs.com/parsons | https://stg-myuhc.phs.com/content/phs/en/tph/parsons.html |            |
+     
 
       
       

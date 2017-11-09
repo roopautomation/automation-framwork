@@ -38,8 +38,8 @@ public class StageRedirectURLsStepDefination {
 	@Then("^User verify title as \"([^\"]*)\"$")
 	public void user_verify_title_as(String expectedTitle) throws Throwable {
 		pageName=expectedTitle;
-		System.out.println("Title og page is >>>"+redirectStgUrl.pageTitle());
-		Assert.assertEquals("Redirected pageTitle of page ["+ pageName +"] is not as expected",expectedTitle,redirectStgUrl.pageTitle());
+		System.out.println("Title of page is >>>"+redirectStgUrl.pageTitle());
+		Assert.assertEquals("Redirected pageTitle of page ["+ pageName +"] is not as expected>>>",expectedTitle,redirectStgUrl.pageTitle());
 	}
 	
 

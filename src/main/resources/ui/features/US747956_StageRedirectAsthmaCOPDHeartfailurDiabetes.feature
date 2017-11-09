@@ -102,3 +102,7 @@ Feature: STG URL Redirects Asthma, COPD, Heart, Diabetes, CAD,
       | Stage URL                        | RedirectURL                                             | Page title              |
       | https://stg-myoptum.phs.com/cad  | https://stg-myoptum.phs.com/content/optum/en/optum/cad.html | Coronary Artery Disease |
       | https://stg-myoptum.phs.com/CAD  | https://stg-myoptum.phs.com/content/optum/en/optum/cad.html | Coronary Artery Disease |
+
+      
+      
+      
