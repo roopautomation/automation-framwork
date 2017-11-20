@@ -4,7 +4,7 @@ Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS
 
   Scenario Outline: Fertility Solutions URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -20,7 +20,7 @@ Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS
 
   Scenario Outline: Kidney Resource Services URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -37,7 +37,7 @@ Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS
 
   Scenario Outline: Transplant Resources Service URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -52,7 +52,7 @@ Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS
 
   Scenario Outline: Maternity Support URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -69,7 +69,7 @@ Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS
 
   Scenario Outline: Spine and Joint Solution (sjs) URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -86,7 +86,7 @@ Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS
 
   Scenario Outline: COPD Services URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -103,7 +103,7 @@ Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS
 
   Scenario Outline: Heart (formerly Heart Failure) URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 

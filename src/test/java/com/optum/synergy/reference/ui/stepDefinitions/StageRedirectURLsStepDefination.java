@@ -30,6 +30,12 @@ public class StageRedirectURLsStepDefination {
 		urlLaunched=launchUrl;
 		redirectStgUrl.launchStageURLs(launchUrl);
 	}
+	@When("^User enter prod URL as \"([^\"]*)\"$")
+	public void user_enter_prod_URL_as(String launchUrl) throws Throwable {
+		urlLaunched=launchUrl;
+		redirectStgUrl.launchStageURLs(launchUrl);
+	}
+
 
 	@Then("^Redirect URL is as \"([^\"]*)\"$")
 	public void redirect_URL_is_as(String expectedUrl) throws Throwable {

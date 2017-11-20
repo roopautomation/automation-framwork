@@ -4,7 +4,7 @@ Feature: US787991 PRD Redirect Health Support and CAD
 
   Scenario Outline: CAD URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -21,7 +21,7 @@ Feature: US787991 PRD Redirect Health Support and CAD
 
   Scenario Outline: Health Support URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 

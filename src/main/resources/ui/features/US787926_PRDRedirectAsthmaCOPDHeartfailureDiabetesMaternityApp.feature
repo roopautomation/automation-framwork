@@ -4,7 +4,7 @@ Feature: US787926 PRD Redirect Asthma, Diabetes, Healthy Pregnency App
 
   Scenario Outline: Asthma URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -18,7 +18,7 @@ Feature: US787926 PRD Redirect Asthma, Diabetes, Healthy Pregnency App
       
   Scenario Outline: Diabetes URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
@@ -34,7 +34,7 @@ Feature: US787926 PRD Redirect Asthma, Diabetes, Healthy Pregnency App
 
   Scenario Outline: Health Pregnency App URLs redirect
     Given User open browser
-    When User enter stage URL as "<PROD URL>"
+    When User enter prod URL as "<PROD URL>"
     Then User verify title as "<Page title>"
     And Redirect URL is as "<RedirectURL>"
 
