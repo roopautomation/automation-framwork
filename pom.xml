@@ -216,7 +216,8 @@
 								<include>**/CucumberRunnerTest.java</include>
 							</includes>
                             <excludes>
-								<exclude>**/CucumberRunnerTestURLs.java</exclude>
+								<exclude>**/CucumberRunnerTestProdURL.java</exclude>
+								<exclude>**/CucumberRunnerTestStageURL.java</exclude>
 								<exclude>**/CucumberRunnerTestAPI.java</exclude>
 							</excludes>
 
@@ -235,7 +236,7 @@
 		</profile>
 
 <profile>
-			<id>url</id>
+			<id>prod</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -257,11 +258,12 @@
 							<reportsDirectory>${basedir}/target</reportsDirectory>
 							<outputDirectory>${basedir}/target</outputDirectory>
 							<includes>
-								<include>**/CucumberRunnerTestURLs.java</include>
+								<include>**/CucumberRunnerTestProdURL.java</include>
 							</includes>
                          <excludes>
 								<exclude>**/CucumberRunnerTest.java</exclude>
 								<exclude>**/CucumberRunnerTestAPI.java</exclude>
+								<exclude>**/CucumberRunnerTestStageURL.java</exclude>
 							</excludes>
 
 						</configuration>
@@ -277,7 +279,51 @@
 				</resources>
 			</build>
 		</profile>
+    
+<profile>
+			<id>stage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.1</version>
+						<configuration>
+							<source>${java.version}</source>
+							<target>${java.version}</target>
+							<compilerArgument></compilerArgument>
+						</configuration>
+					</plugin>
 
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<testFailureIgnore>true</testFailureIgnore>
+							<reportsDirectory>${basedir}/target</reportsDirectory>
+							<outputDirectory>${basedir}/target</outputDirectory>
+							<includes>
+								<include>**/CucumberRunnerTestStageURL.java</include>
+							</includes>
+                         <excludes>
+								<exclude>**/CucumberRunnerTest.java</exclude>
+								<exclude>**/CucumberRunnerTestAPI.java</exclude>
+								<exclude>**/CucumberRunnerTestProdURL.java</exclude>
+							</excludes>
+
+						</configuration>
+					</plugin>
+
+				</plugins>
+
+				<resources>
+					<resource>
+						<directory>src/test/java</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+			</build>
+		</profile>
 
 
 	</profiles>

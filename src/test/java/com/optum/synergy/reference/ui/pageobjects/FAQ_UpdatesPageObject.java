@@ -15,7 +15,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.optum.synergy.reference.lib.SyncLibrary;
+
 
 public class FAQ_UpdatesPageObject extends PageObjectBase {
 

@@ -7,7 +7,7 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.optum.synergy.reference.lib.SyncLibrary;
+
 import com.optum.synergy.reference.ui.pageobjects.CommonHelper;
 import com.optum.synergy.reference.ui.pageobjects.FAQ_UpdatesPageObject;
 import com.optum.synergy.reference.ui.pageobjects.LandingFooterPageObject;

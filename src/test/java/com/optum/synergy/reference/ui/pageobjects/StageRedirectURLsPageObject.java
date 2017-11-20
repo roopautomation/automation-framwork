@@ -18,7 +18,7 @@ public class StageRedirectURLsPageObject extends PageObjectBase{
 		return driver.getCurrentUrl();
 	}
 	public String pageTitle(){
-		helper.waitForPageLoad(driver);
+		//helper.waitForPageLoad(driver);
 		return driver.getTitle();
 	}
 
