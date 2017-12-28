@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@stage
+@stage  @test
 Feature: US848702 STG URLs for BRS, TPH  and 3 TPH Client pages
 
   Scenario Outline: Bariatric Resource Services (BRS) URLs redirect

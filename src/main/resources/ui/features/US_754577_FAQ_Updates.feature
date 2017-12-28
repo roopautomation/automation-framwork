@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@testdemo
+@testdemo @test
 Feature: FAQ Updates to default state open
 
   Scenario: FAQ page displays with all questions defauld open

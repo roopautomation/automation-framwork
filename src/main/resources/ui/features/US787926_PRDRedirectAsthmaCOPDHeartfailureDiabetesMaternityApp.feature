@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@prod
+@prod  @test
 Feature: US787926 PRD Redirect Asthma, Diabetes, Healthy Pregnency App
 
   Scenario Outline: Asthma URLs redirect

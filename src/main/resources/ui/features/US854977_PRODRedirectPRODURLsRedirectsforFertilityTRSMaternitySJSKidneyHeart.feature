@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@prod
+@prod  @test
 Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS, COPD & Heart
 
   Scenario Outline: Fertility Solutions URLs redirect
@@ -10,7 +10,7 @@ Feature: US854977 PROD URLs Redirects for Fertility, Kidney, Maternity, TRS, SJS
 
     Examples: 
       | PROD URL                                   | RedirectURL                                                            | Page title          |
-      | https://phs.com/fertilitysolutions         | https://www.phs.com/content/phs/en/phs/fertilitysolutions.html         | Fertility Solutions |
+      | https://phs.com/fertilitySOLUtions         | https://www.phs.com/content/phs/en/phs/fertilitysolutions.html         | Fertility Solutions |
       | https://phs.com/fertilitysolutions         | https://www.phs.com/content/phs/en/phs/fertilitysolutions.html         | Fertility Solutions |
       | https://www.phs.com/fertilitySOLUTIONS     | https://www.phs.com/content/phs/en/phs/fertilitysolutions.html         | Fertility Solutions |
       | https://myuhc.phs.com/fertilitysolutions   | https://myuhc.phs.com/content/phs/en/phs/fertilitysolutions.html       | Fertility Solutions |

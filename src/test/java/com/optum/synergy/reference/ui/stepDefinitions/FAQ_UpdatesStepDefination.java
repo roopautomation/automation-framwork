@@ -37,7 +37,8 @@ public class FAQ_UpdatesStepDefination {
 	}
 	@Then("^Default FAQs are closed with Text color \"([^\"]*)\"$")
 	public void default_FAQs_are_closed_with_Text_color(String color) throws Throwable {
-		System.out.println("First tab Status"+faqPage.openCloseButtonStatus());
+		//System.out.println("First tab Status"+faqPage.openCloseButtonStatus());
+		Thread.sleep(3000);
 		//Assert.assertThat(faqPage.openCloseButtonStatus(), CoreMatchers.containsString("false"));
 		Assert.assertThat("Default FAQs are not closed",faqPage.openCloseButtonStatus(), is(not("true")));
 		//ExtentCucumberFormatter.setTestRunnerOutput("Defsult FAQ are closed");

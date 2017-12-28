@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@sprint31
+@sprint31 @test
 Feature: Print video Transcript
 
   Background: 

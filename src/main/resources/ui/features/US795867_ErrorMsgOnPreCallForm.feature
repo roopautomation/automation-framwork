@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@testdemo
+@testdemo @test
 Feature: Error message on pre call form
 
   Scenario: Error message with invalid phone number

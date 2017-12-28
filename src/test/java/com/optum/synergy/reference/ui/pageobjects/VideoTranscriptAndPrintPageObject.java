@@ -28,13 +28,13 @@ public class VideoTranscriptAndPrintPageObject extends PageObjectBase {
 	private WebElement videoComponent;
 	
 
-	@FindBy(how = How.LINK_TEXT, using = "View Transcript")
+	@FindBy(how = How.LINK_TEXT, using = "Show Transcript")
 	private WebElement viewTranscript;
 	
 	@FindBy(how = How.CSS, using = ".video__drawer--time.ng-binding")
 	private WebElement videoTime;
 	
-	@FindBy(how = How.XPATH, using = ".//*[@id='video_copy']/div/div/div/div/div[2]/span[2]")
+	@FindBy(how = How.XPATH, using = ".//*[@id='video']/div/div/div/div/div[2]/span[2]")
 	private WebElement vertclBar;
 	
 	@FindBy(how = How.CSS, using = ".video__drawer--heading")
@@ -44,10 +44,10 @@ public class VideoTranscriptAndPrintPageObject extends PageObjectBase {
 	@FindBy(how = How.CSS, using = ".video__content__links--link")
 	private WebElement printTranscript;
 	
-	@FindBy(how = How.ID, using = "video_transcript_hide_4929125788001")
+	@FindBy(how = How.ID, using = "video_transcript_hide_5540569504001")
 	private WebElement crossButton;
 	
-	@FindBy(how = How.XPATH, using = ".//*[@id='video_transcript_hide_4929125788001']/parent::div/following-sibling::div")
+	@FindBy(how = How.XPATH, using = ".//*[@id='video_transcript_hide_5540569504001']/parent::div/following-sibling::div")
 	private WebElement drawer;
 	
 	public void scroolToVideoSection(){

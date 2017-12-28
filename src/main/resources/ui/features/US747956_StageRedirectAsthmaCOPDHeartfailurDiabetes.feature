@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@stage
+@stage  @test
 Feature: US747956 STG URL Redirects Asthma, COPD, Heart, Diabetes, CAD,
        Maternity-Health Pregnency App, Health Suport, Spine and Joint Solution (sjs)
 

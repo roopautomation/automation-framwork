@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@stage
+@stage  @test
 Feature: US779161 STG URL Redirects - Fertility, Kidney, Maternity, and Transplant
 
   Scenario Outline: Fertility Solutions URLs redirect

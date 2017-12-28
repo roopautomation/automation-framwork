@@ -126,7 +126,7 @@ public class AuthorRecommendedForYouPageObject extends PageObjectBase {
 	@FindBy(how = How.XPATH, using=".//*[@id='btn-section-2']/preceding::input[1]/following::span[1]")
 	private WebElement confirmEmailGreenCheck;
 	
-	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/preceding::a[1]")
+	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/preceding::a[2]")
 	private WebElement phoneEditLink;
 	
 	@FindBy(how = How.XPATH, using = ".//*[@id='checkboxemail']/following::div[1]/preceding::input[2]")

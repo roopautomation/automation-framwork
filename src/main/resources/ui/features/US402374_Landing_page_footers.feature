@@ -1,5 +1,5 @@
 
-@Release0.0.1 @Sprint1
+@Release0.0.1 @Sprint1 @test
 Feature: US402374 Landing Page Footers
 
   Background: 

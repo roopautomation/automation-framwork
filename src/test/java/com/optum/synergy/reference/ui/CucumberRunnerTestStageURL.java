@@ -18,7 +18,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 	    plugin = { "pretty", "html:target/cucumber","json:target/cucumber.json","com.cucumber.listener.ExtentCucumberFormatter"}, 
 		features = { "src/main/resources/ui/features" },
-		tags = { "@stage" },
+		tags = { "@stagepi4sprint1" },
 		snippets = SnippetType.CAMELCASE
 )
 public class CucumberRunnerTestStageURL {
@@ -43,7 +43,7 @@ public class CucumberRunnerTestStageURL {
 
         System.setProperty("BrowserVersion", "52");
 		System.setProperty("BrowserType", "Firefox");
-		System.setProperty("BrowserEnv", "saucelab");   // local browser or saucelab browser
+		System.setProperty("BrowserEnv", "lacal");   // local browser or saucelab browser
       
     } 
     

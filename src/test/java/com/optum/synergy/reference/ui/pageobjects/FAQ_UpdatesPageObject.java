@@ -135,7 +135,7 @@ public class FAQ_UpdatesPageObject extends PageObjectBase {
 		openCloseArrow.click();
 	}
     public void faqDiaplayed(){
-    	mediumWait.until(ExpectedConditions.visibilityOf(openCloseArrow)).isDisplayed();
+    	//mediumWait.until(ExpectedConditions.visibilityOf(openCloseArrow)).isDisplayed();
     }
 	public String openCloseButtonStatus() throws InterruptedException {
 

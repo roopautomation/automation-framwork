@@ -1,5 +1,5 @@
 # Author: Sukhwinder Singh
-@sprint31
+@sprint31 @test
 Feature: Video with Transcript Drawer & Analytics
 
   Scenario: Video component without content in Transcrip

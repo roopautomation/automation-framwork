@@ -1,5 +1,5 @@
 #Author: Sukhwinder Singh
-@prod
+@prod  @test
 Feature: US787991 PRD Redirect Health Support and CAD
 
   Scenario Outline: CAD URLs redirect

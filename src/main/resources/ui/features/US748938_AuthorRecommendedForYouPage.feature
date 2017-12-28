@@ -1,4 +1,5 @@
 #Author: Sukhwinder Singh
+@test
 Feature: Author Recommended for You page
 
   Scenario: Landing Page Functionality Testing
